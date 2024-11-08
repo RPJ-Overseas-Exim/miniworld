@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    :root {
+        --primary: #EE9591;
+        --foreground: #333333;
+        --background: #F4F5F7;
+        --muted: #9F9F9F;
+        --blue: #007AFF;
+        --foreground-muted: #555555;
+        --pink: #FF2D55;
+    }
+}
