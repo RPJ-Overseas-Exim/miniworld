@@ -1,10 +1,8 @@
-import TopNav from "~/components/ui/TopNav";
 import Image from "next/image"
 
 export default function HomePage() {
   return (
     <main className="">
-        <TopNav />
         <div className="relative">
             {/* background image */}
             <Image

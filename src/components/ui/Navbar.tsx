@@ -4,7 +4,7 @@ import Link from "next/link"
 import { ShoppingCart, Search } from "lucide-react"
 import MenuBox from "./Menu_Box"
 
-export default function TopNav(){
+export default function Navbar(){
     return (
         <nav className="flex items-center justify-center px-[12px] py-[16px] md:px-[16px] md:py-[22px] lg:px-[20px] lg:py-[27px]">
             <div className="w-full h-full flex flex-row justify-between items-center">
@@ -40,7 +40,6 @@ export default function TopNav(){
 
                 {/* Menu icon section */}
                 <MenuBox />
-                
             </div>
         </nav>
     )
