@@ -11,5 +11,12 @@
         --blue: #007AFF;
         --foreground-muted: #555555;
         --pink: #FF2D55;
+
+        --foreground-pink: #EE9591;
+        --foreground-purple: #AF52DE;
     }
+}
+
+body{
+    background-color: white;
 }
