@@ -1,18 +1,10 @@
-import Image from "next/image"
+import HomeCard from "~/components/home/HomeCard";
 
 export default function HomePage() {
   return (
     <main className="">
-        <div className="relative">
-            {/* background image */}
-            <Image
-                src="/images/hero-img.svg"
-                alt="hero image"
-                width={100}
-                height={100}
-                className="w-full h-full object-cover"
-            />
-            
+        <div className="relative flex items-center justify-center md:justify-end min-h-[400px] md:h-[450px] lg:h-[600px] bg-[url('/images/hero-img.svg')] bg-cover bg-center">
+            <HomeCard />
         </div>
     </main>
   );
