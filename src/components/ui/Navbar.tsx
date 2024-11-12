@@ -9,7 +9,9 @@ export default function Navbar(){
         <nav className="flex items-center justify-center px-[12px] py-[16px] md:px-[16px] md:py-[22px] lg:px-[20px] lg:py-[27px]">
             <div className="w-full h-full flex flex-row justify-between items-center">
                 {/* Logo section */}
-                <div className="flex flex-row gap-x-[5px] items-center">
+                <Link
+                href="/"
+                className="flex flex-row gap-x-[5px] items-center">
                     <Image
                         src="/images/logo.svg"
                         alt="Logo icon"
@@ -18,11 +20,11 @@ export default function Navbar(){
                         className="w-[40px] h-[28px] md:w-[55px] md:h-[38px] lg:w-[69px] lg:h-[47px]"
                     />
                     <h1 className="text-[24px] md:text-[28px] lg:text-[34px] text-foreground-pink font-bold">Miniworld</h1>
-                </div>
+                </Link>
 
                 {/* Middle navigation section */}
                 <div className="hidden md:flex flex-row md:gap-x-[60px] lg:gap-x-[75px] text-foreground-purple text-[16px]">
-                    <Link href="/home">Home</Link>
+                    <Link href="/">Home</Link>
                     <Link href="/shop">Shop</Link>
                     <Link href="/about">About</Link>
                     <Link href="/contact">Contact</Link>
