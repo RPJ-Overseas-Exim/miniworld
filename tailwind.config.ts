@@ -12,6 +12,7 @@ export default {
         foreground: {
             purple: "var(--foreground-purple)",
             pink: "var(--foreground-pink)",
+            blue: "var(--foreground-blue)",
         },
         background: {
             blue: "var(--bg-blue)",
