@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face{
+    font-family: "montserrat-regular";
+    src: url("/fonts/montserrat-regular.woff");
+}
+
 @layer base{
     :root {
         --primary: #EE9591;
@@ -16,8 +21,15 @@
         --foreground-purple: #AF52DE;
         --foreground-blue: #007AFF;
 
-        --bg-blue: #1E2FA9;
         --bg-pink: #EE9591;
+        --bg-purple: #AF52DE;
+        --bg-blue: #1E2FA9;
+
+        --border-pink: #EE9591;
+        --border-purple: #AF52DE;
+        --border-blue: #007AFF;
+
+        --font-regular: "monsterrat-regular"
     }
 }
 

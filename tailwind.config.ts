@@ -7,16 +7,23 @@ export default {
     extend: {
       fontFamily: {
         sans: ["var(--font-geist-sans)", ...fontFamily.sans],
+        montserrat: ["var(--font-regular)"]
       },
       colors: {
         foreground: {
-            purple: "var(--foreground-purple)",
             pink: "var(--foreground-pink)",
+            purple: "var(--foreground-purple)",
             blue: "var(--foreground-blue)",
         },
         background: {
-            blue: "var(--bg-blue)",
             pink: "var(--bg-pink)",
+            purple: "var(--bg-purple)",
+            blue: "var(--bg-blue)",
+        }, 
+        border: {
+            pink: "var(--border-pink)",
+            purple: "var(--border-purple)",
+            blue: "var(--border-blue)",
         }
       }
     },

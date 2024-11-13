@@ -6,7 +6,7 @@ import MenuBox from "./Menu_Box"
 
 export default function Navbar(){
     return (
-        <nav className="flex items-center justify-center px-[12px] py-[16px] md:px-[16px] md:py-[22px] lg:px-[20px] lg:py-[27px]">
+        <nav className="bg-white z-[99] flex items-center justify-center px-[12px] py-[16px] md:px-[16px] md:py-[22px] lg:px-[20px] lg:py-[27px]">
             <div className="w-full h-full flex flex-row justify-between items-center">
                 {/* Logo section */}
                 <Link
@@ -19,7 +19,7 @@ export default function Navbar(){
                         height={100}
                         className="w-[40px] h-[28px] md:w-[55px] md:h-[38px] lg:w-[69px] lg:h-[47px]"
                     />
-                    <h1 className="text-[24px] md:text-[28px] lg:text-[34px] text-foreground-pink font-bold">Miniworld</h1>
+                    <h1 className="text-[24px] md:text-[28px] lg:text-[34px] text-foreground-pink font-bold font-monsterrat">Miniworld</h1>
                 </Link>
 
                 {/* Middle navigation section */}
