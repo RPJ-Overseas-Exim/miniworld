@@ -2,6 +2,7 @@
 import React from "react"
 import { CrossIcon, House, Info, Menu, Phone, ShoppingBag } from "lucide-react"
 import Link from "next/link"
+import { TwoColorButton } from "./Button"
 
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
@@ -59,33 +60,33 @@ export default function MenuBox(){
                     {/* navigation section */}
                     <div className="flex flex-col gap-y-[50px] text-foreground-pink font-bold text-[32px] pr-[50px]">
                         
-                        <BlendButton>
-                            <div className="flex gap-x-2 items-center">
+                        <TwoColorButton>
+                            <Link href="/home" className="flex gap-x-2 items-center">
                                 <House className="" width={38} height={38} />
-                                <Link href="/home" className="">Home</Link>
-                            </div>
-                        </BlendButton>
+                                <div>Home</div>
+                            </Link>
+                        </TwoColorButton>
 
-                        <BlendButton>
-                            <div className="flex gap-x-2 items-center">
+                        <TwoColorButton>
+                            <Link href="/shop" className="flex gap-x-2 items-center">
                                 <ShoppingBag width={38} height={38} />
-                                <Link href="/shop">Shop</Link>
-                            </div>
-                        </BlendButton>
+                                <div>Shop</div>
+                            </Link>
+                        </TwoColorButton>
 
-                        <BlendButton>
-                            <div className="flex gap-x-2 items-center">
+                        <TwoColorButton>
+                            <Link href="/about" className="flex gap-x-2 items-center">
                                 <Info width={38} height={38} />
-                                <Link href="/about">About</Link>
-                            </div>
-                        </BlendButton>
+                                <div>About</div>
+                            </Link>
+                        </TwoColorButton>
 
-                        <BlendButton>
-                            <div className="flex gap-x-2 items-center">
+                        <TwoColorButton>
+                            <Link href="/contact" className="flex gap-x-2 items-center">
                                 <Phone width={38} height={38} />
-                                <Link href="/contact">Contact</Link>
-                            </div>
-                        </BlendButton>
+                                <div>Contact</div>
+                            </Link>
+                        </TwoColorButton>
 
                     </div>
                 </div>
@@ -94,18 +95,3 @@ export default function MenuBox(){
     )
 }
 
-interface BlendButtonProps{
-    children: React.ReactNode,
-}
-
-export function BlendButton({children}:BlendButtonProps){
-    return (
-        <div className="relative px-6 py-3 font-bold text-white group">
-            <span className="absolute w-full h-full bg-background-purple opacity-70 inset-0 -translate-x-1 -translate-y-1 transition-all duration-300 ease group-hover:translate-x-0 group-hover:translate-y-0"></span>
-            <span className="absolute w-full h-full bg-background-pink opacity-70 inset-0 translate-x-1 translate-y-1 transition-all duration-300 ease group-hover:translate-x-0 group-hover:translate-y-0 mix-blend-screen"></span>
-            <span className="relative">
-                {children}
-            </span>
-        </div>
-    )
-}

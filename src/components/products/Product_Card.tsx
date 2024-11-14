@@ -2,6 +2,7 @@
 import React from "react"
 import Image from "next/image"
 import { Share2, Heart } from "lucide-react"
+import { CardButton } from "../ui/Button";
 
 export interface ProductCardProps {
    src: string;
@@ -48,16 +49,18 @@ export function ProductCard({src, alt, title, description, price, width=100, hei
             {/* section on hover */}
             <div className={`${showInfo ? "absolute": "hidden"} bg-[rgba(85,85,85,0.3)] w-full h-full flex items-center justify-center`}>
                 <div className="space-y-2">
-                    <button
-                        type="button"
-                        onClick={handleAddToCart}
-                        className="bg-white text-foreground-pink font-semibold text-[12px] md:text-[16px] px-4 py-2"
-                    >
-                        Add to cart
-                    </button>
+                    <CardButton>
+                        <button
+                            type="button"
+                            onClick={handleAddToCart}
+                        >
+                            Add to cart
+                        </button>
+                    </CardButton>
 
                     <div className="flex justify-center">
                         <div className="flex flex-col items-start gap-y-[2px]">
+                            
                             <button
                                 type="button"
                                 className="text-white md:text-lg flex items-center gap-x-2 w-[max-content]"

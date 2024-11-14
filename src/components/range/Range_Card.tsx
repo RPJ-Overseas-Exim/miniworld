@@ -2,6 +2,7 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { SliderButton } from "../ui/Button"
 
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
@@ -18,6 +19,17 @@ export interface RangeCardProps {
 }
 
 export function RangeCard({src, alt, label, link, width=100, height=100}:RangeCardProps){
+    {/* Range card functional section */}
+    const [showInfo, setShowInfo]= React.useState<boolean>(false)
+    
+    const handleMouseOver = ()=>{
+        setShowInfo(true)
+    }
+
+    const handleMouseLeave = ()=>{
+        setShowInfo(false)
+    }   
+
     {/* Range card animation section */}
     const rangeCardRef = React.useRef<HTMLAnchorElement>(null)
     
@@ -37,20 +49,29 @@ export function RangeCard({src, alt, label, link, width=100, height=100}:RangeCa
 
     return (
         <Link
-        ref={rangeCardRef}
-        href={link}
-        className="flex flex-col justify-center gap-y-2 transition-all duration-300 ease transform hover:scale-2">
+            ref={rangeCardRef}
+            href={link}
+            className="flex flex-col justify-center gap-y-2 relative"
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+        >
+
+            <div className={`${showInfo ? "flex" : "hidden"} items-center justify-center absolute w-full h-full bg-[rgba(85,85,85,0.4)]`}>
+                <SliderButton>
+                    <div className="text-white">
+                        {label}
+                    </div>
+                </SliderButton>
+            </div>
+
             <Image
                 src={src}
                 alt={alt}
                 width={width}
                 height={height}
-                className="w-[200px] h-[270px] sm:w-[280px] sm:h-[350px] md:w-[350px] md:h-[420px] rounded-lg object-cover"
+                className="w-[200px] h-[270px] sm:w-[280px] sm:h-[350px] md:w-[350px] md:h-[420px] rounded-lg object-cover relative z-[-1]"
             />
-
-            <div className="text-xl text-black text-center font-semibold">
-                {label}
-            </div>
+            
         </Link>
     )
 }
