@@ -4,7 +4,7 @@ import { ProductCard } from "./ProductCard"
 
 export default function Products(){
     return (
-        <section className="px-6 sm:px-8 md:px-10 space-y-8" >
+        <section className="bg-white px-6 sm:px-8 md:px-10 space-y-8" >
             {/* heading section */}
             <h2 className="text-foreground-blue text-center font-bold text-[24px] md:text-[32px]">Our Products</h2>
     

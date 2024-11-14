@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export default function RangeSection(){
     return (
-        <section className="w-full space-y-4 sm:space-y-6">
+        <section className="bg-white w-full space-y-4 sm:space-y-6">
             {/* heading section */}
             <div className="">
                 <h2 className="text-foreground-blue text-center font-bold text-[24px] md:text-[32px]">Browse the Range</h2>

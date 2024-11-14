@@ -1,15 +1,13 @@
-import HomeSection from "~/components/home/HomeSection";
+import HeroSection from "~/components/hero/HeroSection";
 import RangeSection from "~/components/range/Range_Section";
-import Products from "~/components/products/Products";
+import ProductSection from "~/components/products/Products";
 
 export default function HomePage() {
   return (
     <main className="flex flex-col gap-y-8 sm:gap-y-10">
-        <HomeSection />
-        <div className="flex flex-col gap-y-8 sm:gap-y-10">
-            <RangeSection />
-            <Products />
-        </div>
+        <HeroSection />
+        <RangeSection />
+        <ProductSection />
     </main>
   );
 }
