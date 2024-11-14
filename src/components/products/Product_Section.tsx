@@ -1,10 +1,10 @@
 import React from "react"
 import Link from "next/link"
-import { ProductCard } from "./ProductCard"
+import { ProductCard } from "./Product_Card"
 
 export default function Products(){
     return (
-        <section className="bg-white px-6 sm:px-8 md:px-10 space-y-8" >
+        <section className="bg-white px-6 sm:px-8 md:px-10 space-y-8 z-[4]" >
             {/* heading section */}
             <h2 className="text-foreground-blue text-center font-bold text-[24px] md:text-[32px]">Our Products</h2>
     

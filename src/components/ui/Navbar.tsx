@@ -6,7 +6,7 @@ import MenuBox from "./Menu_Box"
 
 export default function Navbar(){
     return (
-        <nav className="fixed w-full bg-white z-[99] flex items-center justify-center px-[12px] py-[16px] md:px-[16px] md:py-[22px] lg:px-[20px] lg:py-[27px]">
+        <nav className="fixed w-full bg-white z-[99] flex items-center justify-center px-[12px] py-[16px] md:px-[16px] md:py-[18px] lg:px-[20px] lg:py-[22px]">
             <div className="w-full h-full flex flex-row justify-between items-center">
                 {/* Logo section */}
                 <Link

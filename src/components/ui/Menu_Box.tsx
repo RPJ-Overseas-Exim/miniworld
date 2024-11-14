@@ -2,6 +2,7 @@
 import React from "react"
 import { CrossIcon, House, Info, Menu, Phone, ShoppingBag } from "lucide-react"
 import Link from "next/link"
+
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 
