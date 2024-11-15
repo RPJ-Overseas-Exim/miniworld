@@ -1,7 +1,7 @@
 import React from "react"
 import Link from "next/link"
 import { ProductCard } from "./Product_Card"
-import { ArrowButton } from "../ui/Button"
+import { ArrowButton } from "~/components/ui/Button"
 
 export default function Products(){
     return (

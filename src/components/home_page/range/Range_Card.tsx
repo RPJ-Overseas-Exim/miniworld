@@ -2,7 +2,7 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { CardButton } from "../ui/Button"
+import { CardButton } from "~/components/ui/Button"
 
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
@@ -36,14 +36,14 @@ export function RangeCard({src, alt, label, description, link, width=100, height
     
     useGSAP(()=>{
         gsap.from(rangeCardRef.current, {
-            y: 50,
+            y: 120,
             opacity: 0,
-            duration: 0.3,
+            duration: 1,
             scrollTrigger: {
                 trigger: rangeCardRef.current,
                 start: "top 80%",
-                end: "bottom 110%",
-                toggleActions: "restart none none reverse",
+                end: "top 79%",
+                scrub: 2,
             }
         })
     })

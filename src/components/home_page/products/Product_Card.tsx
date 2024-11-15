@@ -2,7 +2,7 @@
 import React from "react"
 import Image from "next/image"
 import { Share2, Heart } from "lucide-react"
-import { CardButton } from "../ui/Button";
+import { CardButton } from "~/components/ui/Button";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -36,14 +36,14 @@ export function ProductCard({src, alt, title, description, price, width=100, hei
     
     useGSAP(()=>{
         gsap.from(productCardRef.current, {
-            y: 50,
+            y: 120,
             opacity: 0,
-            duration: 0.3,
+            duration: 1,
             scrollTrigger: {
                 trigger: productCardRef.current,
-                start: "top 80%",
-                end: "bottom 110%",
-                toggleActions: "restart none none reverse",
+                start: "top 81%",
+                end: "top 80%",
+                scrub: 2,
             }
         })
     })

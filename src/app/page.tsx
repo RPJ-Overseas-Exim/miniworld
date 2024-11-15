@@ -1,8 +1,8 @@
 import React from "react"
-import HeroSection from "~/components/hero/Hero_Section";
-import RangeSection from "~/components/range/Range_Section";
-import ProductSection from "~/components/products/Product_Section";
-import SliderSection from "~/components/slider/Slider_Section"
+import HeroSection from "~/components/home_page/hero/Hero_Section";
+import RangeSection from "~/components/home_page/range/Range_Section";
+import ProductSection from "~/components/home_page/products/Product_Section";
+import SliderSection from "~/components/home_page/slider/Slider_Section"
 
 export default function HomePage() {
   return (
