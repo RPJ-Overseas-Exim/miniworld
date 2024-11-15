@@ -4,6 +4,11 @@ import Image from "next/image"
 import { Share2, Heart } from "lucide-react"
 import { CardButton } from "../ui/Button";
 
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger)
+
 export interface ProductCardProps {
    src: string;
    alt: string;
@@ -26,6 +31,24 @@ export function ProductCard({src, alt, title, description, price, width=100, hei
         setShowInfo(false)
     }
 
+    {/* Product card animation section */}
+    const productCardRef = React.useRef<HTMLDivElement>(null)
+    
+    useGSAP(()=>{
+        gsap.from(productCardRef.current, {
+            y: 50,
+            opacity: 0,
+            duration: 0.3,
+            scrollTrigger: {
+                trigger: productCardRef.current,
+                start: "top 80%",
+                end: "bottom 110%",
+                toggleActions: "restart none none reverse",
+            }
+        })
+    })
+
+
     {/* actions handler functions */}
     const handleAddToCart = ()=>{
         console.log("Add to cart clicked")
@@ -39,24 +62,26 @@ export function ProductCard({src, alt, title, description, price, width=100, hei
         console.log("Product Like clicked")
     }
 
-
+    
     return (
         <div
+            ref={productCardRef}
             onMouseLeave={handleMouseLeave}
             onMouseOver={handleMouseOver}
-            className="relative w-[150px] h-[280px] sm:w-[200px] sm:h-[320px] md:w-[220px] md:h-[400px] lg:w-[285px] lg:h-[446px] overflow-hidden border border-zinc-300"
+            className="relative w-[150px] h-[280px] sm:w-[200px] sm:h-[320px] md:w-[220px] md:h-[400px] lg:w-[285px] lg:h-[446px] overflow-hidden bg-white"
         >
             {/* section on hover */}
-            <div className={`${showInfo ? "absolute": "hidden"} bg-[rgba(85,85,85,0.3)] w-full h-full flex items-center justify-center`}>
+            <div className={`${showInfo ? "absolute": "hidden"} bg-[#00000076] w-full h-full flex items-center justify-center`}>
                 <div className="space-y-2">
-                    <CardButton>
-                        <button
-                            type="button"
-                            onClick={handleAddToCart}
-                        >
+                    <button
+                        type="button"
+                        onClick={handleAddToCart}
+                        className="text-white"
+                    >
+                        <CardButton>
                             Add to cart
-                        </button>
-                    </CardButton>
+                        </CardButton>
+                    </button>
 
                     <div className="flex justify-center">
                         <div className="flex flex-col items-start gap-y-[2px]">

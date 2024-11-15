@@ -2,7 +2,7 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { SliderButton } from "../ui/Button"
+import { CardButton } from "../ui/Button"
 
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
@@ -13,12 +13,13 @@ export interface RangeCardProps {
     src: string;
     alt: string;
     label: string;
+    description: string;
     link: string;
     width?: number;
     height?: number;
 }
 
-export function RangeCard({src, alt, label, link, width=100, height=100}:RangeCardProps){
+export function RangeCard({src, alt, label, description, link, width=100, height=100}:RangeCardProps){
     {/* Range card functional section */}
     const [showInfo, setShowInfo]= React.useState<boolean>(false)
     
@@ -56,14 +57,25 @@ export function RangeCard({src, alt, label, link, width=100, height=100}:RangeCa
             onMouseLeave={handleMouseLeave}
         >
 
-            <div className={`${showInfo ? "flex" : "hidden"} items-center justify-center absolute w-full h-full bg-[rgba(85,85,85,0.4)]`}>
-                <SliderButton>
-                    <div className="text-white">
-                        {label}
+            {/* section appears on hover */}
+            <div className={`${showInfo ? "flex" : "hidden"} items-center justify-center absolute w-full h-full bg-[#00000096] rounded-lg`}>
+                <div className="w-4/5 flex flex-col justify-center items-start gap-y-4">
+                    <CardButton>
+                        <div className="text-white text-[1rem] font-bold">
+                            {label}
+                        </div>
+                    </CardButton>
+
+                    <div className="text-[2vh] lg:text-[1.3vw] flex justify-center text-[#ffffffba]">
+                        <div className="w-10/12">
+                            {description}
+                        </div>
                     </div>
-                </SliderButton>
+                </div>
+
             </div>
 
+            {/* image section */}
             <Image
                 src={src}
                 alt={alt}

@@ -30,7 +30,7 @@ export function HeroCard(){
     return (
         <div
         ref={heroCardRef}
-        className="absolute bg-[rgba(0,0,0,0.3)] rounded-lg border px-6 py-8 w-[90%] max-w-[400px] lg:max-w-[500px] flex flex-col gap-y-5 mr-5 lg:mr-12">
+        className="absolute bg-[rgba(0,0,0,0.3)] rounded-lg border px-6 py-8 w-[90%] max-w-[400px] lg:max-w-[500px] flex flex-col gap-y-5 mr-5 lg:mr-12 backdrop-blur-sm">
             <div id="hero-card">
                 <h3 className="text-xs md:text-base lg:text-lg text-white font-semibold">New Arrival</h3>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl text-foreground-pink font-bold whitespace-nowrap">Discover Our</h2>

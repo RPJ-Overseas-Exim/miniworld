@@ -58,35 +58,47 @@ export default function MenuBox(){
                 {/* menu body */}
                 <div className="px-4 py-2 z-[100]">
                     {/* navigation section */}
-                    <div className="flex flex-col gap-y-[50px] text-foreground-pink font-bold text-[32px] pr-[50px]">
+                    <div className="flex flex-col gap-y-[50px] text-foreground-pink font-bold text-[28px] pr-[50px]">
                         
-                        <TwoColorButton>
-                            <Link href="/home" className="flex gap-x-2 items-center">
-                                <House className="" width={38} height={38} />
-                                <div>Home</div>
-                            </Link>
-                        </TwoColorButton>
+                        {/* Home button */}
+                        <Link href="/home">
+                            <TwoColorButton>
+                                <div className="flex gap-x-2 items-center">
+                                    <House className="" width={38} height={38} />
+                                    <div>Home</div>
+                                </div>
+                            </TwoColorButton>
+                        </Link>
 
-                        <TwoColorButton>
-                            <Link href="/shop" className="flex gap-x-2 items-center">
-                                <ShoppingBag width={38} height={38} />
-                                <div>Shop</div>
-                            </Link>
-                        </TwoColorButton>
+                        {/* Shop button */}
+                        <Link href="/shop">
+                            <TwoColorButton>
+                                <div className="flex gap-x-2 items-center">
+                                    <ShoppingBag width={38} height={38} />
+                                    <div>Shop</div>
+                                </div>
+                            </TwoColorButton>
+                        </Link>
 
-                        <TwoColorButton>
-                            <Link href="/about" className="flex gap-x-2 items-center">
-                                <Info width={38} height={38} />
-                                <div>About</div>
-                            </Link>
-                        </TwoColorButton>
+                        {/* About button */}
+                        <Link href="/about">
+                            <TwoColorButton>
+                                <div className="flex gap-x-2 items-center">
+                                    <Info width={38} height={38} />
+                                    <div>About</div>
+                                </div>
+                            </TwoColorButton>
+                        </Link>
 
-                        <TwoColorButton>
-                            <Link href="/contact" className="flex gap-x-2 items-center">
-                                <Phone width={38} height={38} />
-                                <div>Contact</div>
-                            </Link>
-                        </TwoColorButton>
+                        {/* Contact button */}
+                        <Link href="/contact">
+                            <TwoColorButton>
+                                <div className="flex gap-x-2 items-center">
+                                    <Phone width={38} height={38} />
+                                    <div>Contact</div>
+                                </div>
+                            </TwoColorButton>
+                        </Link>
 
                     </div>
                 </div>
