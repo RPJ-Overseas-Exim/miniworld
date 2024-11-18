@@ -49,11 +49,11 @@
     }
 
     .home-gradient{
-        background: linear-gradient(white, var(--blue) 29%, white 42%, var(--primary) 69%, var(--pink) 87%)
+        background: linear-gradient(white, var(--blue) 29%, white 50%, var(--primary) 69%, var(--pink) )
     }
     @media only screen and (min-width:740px){
         .home-gradient{
-            background: linear-gradient(white, var(--blue) 20%, white 33%, var(--primary) 69%, var(--pink) 87%)
+            background: linear-gradient(white, var(--blue) 18%, white 50%, var(--primary) 69%, var(--pink) )
         }
     }
 }
