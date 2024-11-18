@@ -7,20 +7,19 @@ import { montserratVariable } from "public/fonts/fonts"
 
 export default function Navbar() {
     return (
-        <nav className="sticky top-0 left-0 w-full bg-white z-[99] flex items-center justify-center px-6 py-4 md:px-4 md:py-5 lg:px-6 lg:py-6">
+        <nav className="sticky top-0 left-0 w-full bg-white z-[99] flex items-center justify-center px-6 py-4 md:px-4 md:py-5 lg:px-6 ">
             <div className="w-full h-full flex flex-row justify-between items-center">
                 {/* Logo section */}
                 <Link
                     href="/"
                     className="flex gap-x-5 items-center">
-                    <Image
-                        src="/images/logo.svg"
-                        alt="Logo icon"
-                        width={48}
-                        height={48}
-                        sizes="(min-width: 55rem) 55px, (min-width: 64rem) 69px"
-                        className="md:w-[55px] lg:w-[69px] "
-                    />
+                    <div className="relative min-w-12 min-h-12 md:min-w-14 md:min-w-14 lg:min-w-16 lg:min-w-16">
+                        <Image
+                            src="/images/logo.svg"
+                            alt="Logo icon"
+                            fill
+                        />
+                    </div>
                     <h1 className={"text-[24px] md:text-[28px] lg:text-[34px] text-foreground-pink font-bold " + montserratVariable.className}>Miniworld</h1>
                 </Link>
 
