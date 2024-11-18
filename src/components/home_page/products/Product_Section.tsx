@@ -7,7 +7,7 @@ export default function Products(){
     return (
         <section className="px-6 sm:px-8 md:px-10 space-y-8 z-[4]">
             {/* heading section */}
-            <h2 className="text-foreground-blue text-center font-bold text-[28px] md:text-[32px]">Our Products</h2>
+            <h2 className="text-foreground-blue text-center font-bold text-[28px] md:text-[32px] drop-shadow-md">Our Products</h2>
     
             {/* cards section */}
             <div className="flex items-center justify-center flex-wrap w-full gap-2">

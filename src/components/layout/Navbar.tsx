@@ -2,7 +2,7 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ShoppingCart, Search } from "lucide-react"
-import MenuBox from "./Menu_Box"
+import MenuBox from "../ui/Menu_Box"
 
 export default function Navbar(){
     return (

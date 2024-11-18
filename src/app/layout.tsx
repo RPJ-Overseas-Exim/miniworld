@@ -1,8 +1,9 @@
 import "~/styles/globals.css";
-import Navbar from "~/components/ui/Navbar";
+import Navbar from "~/components/layout/Navbar";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import { Footer } from "~/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "miniworld",
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body className="overflow-x-hidden">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

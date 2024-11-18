@@ -8,10 +8,12 @@ export default function HomePage() {
   return (
     <main className="flex flex-col">
         <HeroSection />
-        <RangeSection />
-        <div className="flex flex-col gap-y-8 sm:gap-y-10 bg-gradient-to-b from-blue-400 via-white to-pink-900 pt-10">
-            <ProductSection />
-            <SliderSection />
+        <div className="home-gradient z-[4]">
+            <RangeSection />
+            <div className="flex flex-col gap-y-8 sm:gap-y-10">
+                <ProductSection />
+                <SliderSection />
+            </div>
         </div>
     </main>
   );
