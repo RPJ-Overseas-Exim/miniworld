@@ -3,7 +3,7 @@ import { RangeCard } from "./Range_Card"
 
 export default function RangeSection(){
     return (
-        <section className="w-full min-h-[550px] space-y-4 sm:space-y-6 z-[4] bg-gradient-to-b from-white to-blue-400">
+        <section className="w-full md:min-h-[400px] lg:min-h-[550px] space-y-4 sm:space-y-6 z-[4] bg-gradient-to-b from-white to-blue-400">
             {/* heading section */}
             <div className="max-w-[85%] m-auto space-y-2 mt-4">
                 <h2 className="text-foreground-blue text-center font-bold text-[24px] md:text-[32px]">Browse the Range</h2>
