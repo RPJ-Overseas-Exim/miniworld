@@ -72,7 +72,6 @@ export function RangeCard({src, alt, label, description, link, width=100, height
                         </div>
                     </div>
                 </div>
-
             </div>
 
             {/* image section */}
@@ -83,6 +82,10 @@ export function RangeCard({src, alt, label, description, link, width=100, height
                 height={height}
                 className="w-[200px] h-[270px] sm:w-[280px] sm:h-[350px] md:w-[350px] md:h-[420px] rounded-lg object-cover relative z-[-1]"
             />
+
+            <div className="text-center">
+                {label}
+            </div>
             
         </Link>
     )
