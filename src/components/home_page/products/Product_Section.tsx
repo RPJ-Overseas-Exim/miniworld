@@ -66,6 +66,7 @@ export default function Products(){
             <div className="flex items-center justify-center">
                 <Link
                     href="/products"
+                    className="bg-white"
                 >
                     <ArrowButton>
                         Show More

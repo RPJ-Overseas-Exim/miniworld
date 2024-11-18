@@ -36,16 +36,24 @@
         background-color: white;
     }
 
+    .swiper {
+      width: 300px;
+      height: 300px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -150px;
+      margin-top: -150px;
+    }
 
-    .swiper-slide{
-        text-align: center;
-        font-size: 18px;
-        background-color: white;
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+    }
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: black;
+    .swiper-slide img {
+      display: block;
+      width: 100%;
     }
 
     .home-gradient{
