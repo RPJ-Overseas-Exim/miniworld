@@ -40,7 +40,7 @@ export function HeroCard(){
                 </h3>
 
                 <h2
-                    className={`text-3xl md:text-4xl lg:text-[3.2rem] text-foreground-pink font-bold ${montserratVariable.className} whitespace-nowrap leading-[35px] lg:leading-[65px]`}
+                    className={`text-3xl md:text-4xl lg:text-[3.2rem] text-foreground-pink font-bold ${montserratVariable.className} whitespace-nowrap drop-shadow-md leading-[35px] lg:leading-[65px]`}
                 >
                     Discover Our
                 </h2>
