@@ -30,6 +30,9 @@ export default {
                     blue: "var(--border-blue)",
                 }
             },
+            borderRadius:{
+                footer: "0 6em 0 0"
+            }
         },
     },
     plugins: [],

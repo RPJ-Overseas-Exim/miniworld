@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face{
-    font-family: "montserrat-regular";
-    src: url("/fonts/montserrat-regular.woff");
-}
-
 @layer base{
     :root {
         --primary: #EE9591;
@@ -28,8 +23,6 @@
         --border-pink: #EE9591;
         --border-purple: #AF52DE;
         --border-blue: #007AFF;
-
-        --font-regular: "monsterrat-regular";
     }
 
     body{
@@ -55,13 +48,12 @@
       display: block;
       width: 100%;
     }
-
     .home-gradient{
-        background: linear-gradient(white, var(--blue) 29%, white 50%, var(--primary) 69%, var(--pink) )
+        background: linear-gradient(white, #44AEE8 23%, white 41%, var(--primary) 69%, var(--pink) )
     }
     @media only screen and (min-width:740px){
         .home-gradient{
-            background: linear-gradient(white, var(--blue) 18%, white 50%, var(--primary) 69%, var(--pink) )
+            background: linear-gradient(white, #44AEE8 23%, white 41%, var(--primary) 69%, var(--pink) )
         }
     }
 }

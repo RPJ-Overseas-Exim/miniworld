@@ -1,9 +1,9 @@
 import "~/styles/globals.css";
 import Navbar from "~/components/layout/Navbar";
 
-import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import { Footer } from "~/components/layout/Footer";
+import { poppinsRegular } from "public/fonts/fonts";
 
 export const metadata: Metadata = {
   title: "miniworld",
@@ -16,7 +16,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
+    <html lang="en" className={poppinsRegular.className}>
       <body className="overflow-x-hidden">
         <Navbar />
         {children}
