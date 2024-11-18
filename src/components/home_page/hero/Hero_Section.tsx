@@ -25,7 +25,7 @@ export default function HeroSection(){
     return (
         <section
             ref={heroSectionRef}
-            className="mt-[70px] relative flex items-center justify-end bg-[url('/images/hero-img.svg')] min-h-[350px] md:h-[450px] lg:h-[550px] bg-cover bg-center z-[1]"
+            className="mt-[70px] relative flex items-center justify-center sm:justify-end bg-[url('/images/hero-img.svg')] min-h-[350px] md:h-[450px] lg:h-[550px] bg-cover bg-center z-[1]"
         >
             {/* hero card section */}
             <HeroCard />
