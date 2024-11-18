@@ -15,7 +15,6 @@ export default function HeroSection(){
             scrollTrigger: {
                 trigger: heroSectionRef.current,
                 pin: true,
-                pinSpacing: false,
                 scrub: 1,
                 start: "top 70px",
                 end: "bottom 70px",

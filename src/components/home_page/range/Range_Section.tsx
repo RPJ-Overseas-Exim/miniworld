@@ -3,7 +3,7 @@ import { RangeCard } from "./Range_Card"
 
 export default function RangeSection(){
     return (
-        <section className="w-full space-y-4 sm:space-y-6 z-[4] bg-gradient-to-b from-white to-blue-400">
+        <section className="w-full min-h-[550px] space-y-4 sm:space-y-6 z-[4] bg-gradient-to-b from-white to-blue-400">
             {/* heading section */}
             <div className="max-w-[85%] m-auto space-y-2 mt-4">
                 <h2 className="text-foreground-blue text-center font-bold text-[24px] md:text-[32px]">Browse the Range</h2>
@@ -11,7 +11,7 @@ export default function RangeSection(){
             </div>
 
             {/* cards section */}
-            <div className="flex flex-row flex-wrap gap-y-8 sm:gap-y-4 justify-center items-center gap-x-4 px-4 py-6">
+            <div className="flex flex-row gap-x-2 flex-wrap items-center justify-center gap-y-4 py-6">
                 <RangeCard
                     src="/images/category/custom.svg"
                     link="/custom"

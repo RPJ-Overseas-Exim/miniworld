@@ -80,10 +80,10 @@ export function RangeCard({src, alt, label, description, link, width=100, height
                 alt={alt}
                 width={width}
                 height={height}
-                className="w-[200px] h-[270px] sm:w-[280px] sm:h-[350px] md:w-[350px] md:h-[420px] rounded-lg object-cover relative z-[-1]"
+                className="w-[150px] h-[220px] sm:w-[200px] sm:h-[290px] md:w-[230px] md:h-[320px] rounded-lg object-cover relative z-[-1]"
             />
 
-            <div className="text-center text-zinc-600 text-2xl font-bold md:hidden">
+            <div className="text-center text-zinc-600 text-xl font-bold md:hidden">
                 {label}
             </div>
             
