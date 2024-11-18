@@ -2,11 +2,10 @@
 import React from "react";
 import Image from "next/image";
 
-import { Pagination, EffectCube, Autoplay} from "swiper/modules"
+import { Pagination, Autoplay} from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import 'swiper/css/pagination';
-import 'swiper/css/effect-cube';
 
 export default function SwiperSlides(){
     const slideImages = [
@@ -18,23 +17,16 @@ export default function SwiperSlides(){
 
      return (
         <Swiper
-            className="w-[300px] h-[300px] md:w-[350px] md:h-[350px]"
+            className="w-full h-[300px] md:h-[350px]"
             loop={true}
             grabCursor={true}
             draggable={true}
-            modules={[Pagination, EffectCube, Autoplay]}
-            navigation
+            modules={[Pagination, Autoplay]}
             pagination={{clickable: true}}
-            effect={"cube"}
-            cubeEffect={{
-              shadow: true,
-              slideShadows: true,
-              shadowOffset: 20,
-              shadowScale: 0.94,
-            }}
             autoplay={{
                 delay: 5000,
             }}
+            slidesPerView={3}
         >
         {slideImages.map((value, index)=>(
             <SwiperSlide key={index} className="relative rounded-xl border-2 border-border-pink overflow-hidden">
