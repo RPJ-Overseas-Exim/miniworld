@@ -18,9 +18,10 @@ export default function SwiperSlides(){
 
      return (
         <Swiper
-            className="w-[300px] h-[300px]"
+            className="w-[300px] h-[300px] md:w-[350px] md:h-[350px]"
             loop={true}
             grabCursor={true}
+            draggable={true}
             modules={[Pagination, EffectCube, Autoplay]}
             navigation
             pagination={{clickable: true}}
@@ -36,7 +37,11 @@ export default function SwiperSlides(){
             }}
         >
         {slideImages.map((value, index)=>(
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className="relative rounded-xl border-2 border-border-pink overflow-hidden">
+                {/* filter section */}
+                <div className="absolute w-full h-full bg-[rgba(0,0,0,0.2)]"></div>
+                
+                {/* Image section */}
                 <Image 
                     src={value}
                     alt="Slide image"
