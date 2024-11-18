@@ -52,13 +52,13 @@ export function RangeCard({src, alt, label, description, link, width=100, height
         <Link
             ref={rangeCardRef}
             href={link}
-            className="flex flex-col justify-center gap-y-2 relative"
+            className="flex flex-col justify-center gap-y-4 relative"
             onMouseOver={handleMouseOver}
             onMouseLeave={handleMouseLeave}
         >
 
             {/* section appears on hover */}
-            <div className={`${showInfo ? "flex" : "hidden"} items-center justify-center absolute w-full h-full bg-[#00000096] rounded-lg`}>
+            <div className={`hidden md:${showInfo ? "flex" : "hidden"} items-center justify-center absolute w-full h-full bg-[#00000096] rounded-lg`}>
                 <div className="w-4/5 flex flex-col justify-center items-start gap-y-4">
                     <CardButton>
                         <div className="text-white text-[1rem] font-bold">
@@ -83,7 +83,7 @@ export function RangeCard({src, alt, label, description, link, width=100, height
                 className="w-[200px] h-[270px] sm:w-[280px] sm:h-[350px] md:w-[350px] md:h-[420px] rounded-lg object-cover relative z-[-1]"
             />
 
-            <div className="text-center">
+            <div className="text-center text-zinc-600 text-2xl font-bold md:hidden">
                 {label}
             </div>
             

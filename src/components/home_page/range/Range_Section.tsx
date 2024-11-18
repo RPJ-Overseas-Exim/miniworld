@@ -11,7 +11,7 @@ export default function RangeSection(){
             </div>
 
             {/* cards section */}
-            <div className="flex flex-row flex-wrap gap-y-6 sm:gap-y-2 justify-center items-center gap-x-4 px-4 py-4">
+            <div className="flex flex-row flex-wrap gap-y-8 sm:gap-y-4 justify-center items-center gap-x-4 px-4 py-6">
                 <RangeCard
                     src="/images/category/custom.svg"
                     link="/custom"
