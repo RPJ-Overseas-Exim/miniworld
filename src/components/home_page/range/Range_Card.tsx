@@ -7,6 +7,7 @@ import { CardButton } from "~/components/ui/Button"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { poppinsRegular } from "public/fonts/fonts"
 gsap.registerPlugin(ScrollTrigger)
 
 export interface RangeCardProps {
@@ -83,7 +84,7 @@ export function RangeCard({src, alt, label, description, link, width=100, height
                 className="w-[150px] h-[220px] sm:w-[200px] sm:h-[300px] md:w-[230px] md:h-[340px] rounded-lg object-cover relative z-[-1]"
             />
 
-            <div className="text-center text-zinc-600 text-[1.2rem] font-semibold md:hidden">
+            <div className={`text-center text-zinc-600 text-[18px] lg:text-[24px] font-semibold md:hidden ${poppinsRegular.className}`}>
                 {label}
             </div>
             

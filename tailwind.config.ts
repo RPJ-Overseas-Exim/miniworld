@@ -18,6 +18,7 @@ export default {
                     pink: "var(--foreground-pink)",
                     purple: "var(--foreground-purple)",
                     blue: "var(--foreground-blue)",
+                    muted: "var(--foreground-muted)"
                 },
                 background: {
                     pink: "var(--bg-pink)",

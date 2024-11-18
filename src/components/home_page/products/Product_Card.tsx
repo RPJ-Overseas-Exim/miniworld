@@ -7,6 +7,7 @@ import { CardButton } from "~/components/ui/Button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { poppinsRegular } from "public/fonts/fonts";
 gsap.registerPlugin(ScrollTrigger)
 
 export interface ProductCardProps {
@@ -118,10 +119,10 @@ export function ProductCard({src, alt, title, description, price, width=100, hei
             />
 
             {/* card details section */}
-            <div className="w-full flex flex-col gap-y-2 text-black py-4 px-2">
-                <div className="text-base md:text-xl font-bold">{title}</div>
-                <div className="text-xs md:text-base font-semibold text-zinc-500">{description}</div>
-                <div className="text-base md:text-xl font-medium text-zinc-700">Rs. {price}</div>
+            <div className={`w-full flex flex-col gap-y-2 text-foreground-muted py-4 px-2 ${poppinsRegular.className}`}>
+                <div className="text-base md:text-xl lg:text-[1.6rem] font-semibold">{title}</div>
+                <div className="text-xs md:text-base lg:text-[1rem] font-medium">{description}</div>
+                <div className="text-base md:text-xl lg:text-[1.2rem] font-semibold">Rs. {price}</div>
             </div>
         </div>
     )

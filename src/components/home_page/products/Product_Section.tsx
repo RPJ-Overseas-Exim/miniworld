@@ -2,12 +2,15 @@ import React from "react"
 import Link from "next/link"
 import { ProductCard } from "./Product_Card"
 import { ArrowButton } from "~/components/ui/Button"
+import { poppinsBold, poppinsRegular } from "public/fonts/fonts"
 
 export default function Products(){
     return (
         <section className="px-6 sm:px-8 md:px-10 space-y-8 z-[4]">
             {/* heading section */}
-            <h2 className="text-foreground-blue text-center font-bold text-[28px] md:text-[32px] drop-shadow-md">Our Products</h2>
+            <h2 className={`text-foreground-blue text-center font-bold text-[28px] md:text-[32px] drop-shadow-md ${poppinsBold.className}`}>
+                Our Products
+            </h2>
     
             {/* cards section */}
             <div className="flex items-center justify-center flex-wrap w-full gap-2">
@@ -69,7 +72,9 @@ export default function Products(){
                     className="bg-white"
                 >
                     <ArrowButton>
-                        Show More
+                        <div className={`${poppinsRegular.className} font-semibold lg:text-[1rem]`}>
+                            Show More
+                        </div>
                     </ArrowButton>
                 </Link>
             </div>
