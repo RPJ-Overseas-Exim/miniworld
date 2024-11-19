@@ -7,7 +7,7 @@ import React from "react"
 
 type FooterList = {
     heading: string;
-    links: { [x: string]: string };
+    links: Record<string, string>;
 }
 
 const footerLists: FooterList[] = [
