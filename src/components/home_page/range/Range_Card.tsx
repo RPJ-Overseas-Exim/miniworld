@@ -7,20 +7,20 @@ import { CardButton } from "~/components/ui/Button"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { poppinsRegular } from "public/fonts/fonts"
+import { poppinsBold, poppinsRegular } from "public/fonts/fonts"
 gsap.registerPlugin(ScrollTrigger)
 
 export interface RangeCardProps {
     src: string;
     alt: string;
     label: string;
-    description: string;
+    children: React.ReactNode;
     link: string;
     width?: number;
     height?: number;
 }
 
-export function RangeCard({src, alt, label, description, link, width=100, height=100}:RangeCardProps){
+export function RangeCard({src, alt, label, children, link, width=100, height=100}:RangeCardProps){
     {/* Range card functional section */}
     const [showInfo, setShowInfo]= React.useState<boolean>(false)
     
@@ -59,7 +59,7 @@ export function RangeCard({src, alt, label, description, link, width=100, height
         >
 
             {/* section appears on hover */}
-            <div className={`hidden md:${showInfo ? "flex" : "hidden"} items-center justify-center absolute w-full h-full bg-[#00000096] rounded-lg`}>
+            <div className={`hidden md:${showInfo ? "flex" : "hidden"} items-start pt-12 justify-center absolute w-full h-full bg-[#00000096] rounded-lg`}>
                 <div className="w-4/5 flex flex-col justify-center items-start gap-y-4">
                     <CardButton>
                         <div className="text-white text-[1rem] font-bold">
@@ -67,9 +67,9 @@ export function RangeCard({src, alt, label, description, link, width=100, height
                         </div>
                     </CardButton>
 
-                    <div className="text-[2vh] lg:text-[1.3vw] flex justify-center text-[#ffffffba]">
-                        <div className="w-10/12">
-                            {description}
+                    <div className={"text-base text-semibold flex justify-center text-[#ffffffba] " + poppinsBold.className}>
+                        <div>
+                            {children}
                         </div>
                     </div>
                 </div>

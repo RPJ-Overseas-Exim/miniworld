@@ -1,129 +1,135 @@
-import { relations, sql } from "drizzle-orm";
+import { relations, SQL, sql } from "drizzle-orm";
 import {
-  index,
-  integer,
-  pgTableCreator,
-  primaryKey,
-  text,
-  timestamp,
-  varchar,
+    AnyPgColumn,
+    index,
+    integer,
+    pgTable,
+    primaryKey,
+    text,
+    timestamp,
+    unique,
+    uniqueIndex,
+    varchar,
 } from "drizzle-orm/pg-core";
-import { type AdapterAccount } from "next-auth/adapters";
+import { nanoid } from "nanoid";
 
-/**
- * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
- * database instance for multiple projects.
- *
- * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
- */
-export const createTable = pgTableCreator((name) => `miniworld_${name}`);
+export function lower(email: AnyPgColumn): SQL {
+    return sql`lower(${email})`;
+}
 
-export const posts = createTable(
-  "post",
-  {
-    id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
-    name: varchar("name", { length: 256 }),
-    createdById: varchar("created_by", { length: 255 })
-      .notNull()
-      .references(() => users.id),
+
+export const user = pgTable("user", {
+    id: varchar("id", { length: 12 })
+        .primaryKey()
+        .$defaultFn(() => nanoid(12)),
+    username: varchar("username", { length: 255 }).notNull(),
+    email: varchar("email", { length: 255 }).notNull(),
+    password: varchar("password").notNull(),
+    number: integer("number").notNull(),
+    image: varchar("image", { length: 255 }),
+    verificationOTP: integer("verification_otp")
+        .$defaultFn(() => {
+            return Math.floor(Math.random() * 9999)
+        }),
     createdAt: timestamp("created_at", { withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
+        .default(sql`CURRENT_TIMESTAMP`)
+        .notNull(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
-      () => new Date()
+        () => new Date()
     ),
-  },
-  (example) => ({
-    createdByIdIdx: index("created_by_idx").on(example.createdById),
-    nameIndex: index("name_idx").on(example.name),
-  })
-);
+},
+    (user) => ({
+        numberIdx: index("number_idx").on(user.number),
+        emailUniqueIndex: uniqueIndex('emailUniqueIndex').on(lower(user.email)),
+    })
+)
 
-export const users = createTable("user", {
-  id: varchar("id", { length: 255 })
-    .notNull()
-    .primaryKey()
-    .$defaultFn(() => crypto.randomUUID()),
-  name: varchar("name", { length: 255 }),
-  email: varchar("email", { length: 255 }).notNull(),
-  emailVerified: timestamp("email_verified", {
-    mode: "date",
-    withTimezone: true,
-  }).default(sql`CURRENT_TIMESTAMP`),
-  image: varchar("image", { length: 255 }),
-});
+export const userRelations = relations(user, ({ many }) => ({
+    address: many(address),
+    favProd: many(favProd)
+}))
 
-export const usersRelations = relations(users, ({ many }) => ({
-  accounts: many(accounts),
-}));
+export const favProd = pgTable("fav_product", {
+    productId: varchar("product_id").references(() => product.id),
+    userId: varchar("user_id").references(() => user.id)
 
-export const accounts = createTable(
-  "account",
-  {
-    userId: varchar("user_id", { length: 255 })
-      .notNull()
-      .references(() => users.id),
-    type: varchar("type", { length: 255 })
-      .$type<AdapterAccount["type"]>()
-      .notNull(),
-    provider: varchar("provider", { length: 255 }).notNull(),
-    providerAccountId: varchar("provider_account_id", {
-      length: 255,
-    }).notNull(),
-    refresh_token: text("refresh_token"),
-    access_token: text("access_token"),
-    expires_at: integer("expires_at"),
-    token_type: varchar("token_type", { length: 255 }),
-    scope: varchar("scope", { length: 255 }),
-    id_token: text("id_token"),
-    session_state: varchar("session_state", { length: 255 }),
-  },
-  (account) => ({
-    compoundKey: primaryKey({
-      columns: [account.provider, account.providerAccountId],
-    }),
-    userIdIdx: index("account_user_id_idx").on(account.userId),
-  })
-);
+},
+    (favProd) => ({
+        compound_PK: primaryKey({ columns: [favProd.productId, favProd.userId] })
+    })
+)
 
-export const accountsRelations = relations(accounts, ({ one }) => ({
-  user: one(users, { fields: [accounts.userId], references: [users.id] }),
-}));
+export const favProdRelation = relations(favProd, ({one})=>({
+    userFavProd: one(user, {fields:[favProd.userId], references:[user.id]})
+}))
 
-export const sessions = createTable(
-  "session",
-  {
-    sessionToken: varchar("session_token", { length: 255 })
-      .notNull()
-      .primaryKey(),
-    userId: varchar("user_id", { length: 255 })
-      .notNull()
-      .references(() => users.id),
-    expires: timestamp("expires", {
-      mode: "date",
-      withTimezone: true,
-    }).notNull(),
-  },
-  (session) => ({
-    userIdIdx: index("session_user_id_idx").on(session.userId),
-  })
-);
 
-export const sessionsRelations = relations(sessions, ({ one }) => ({
-  user: one(users, { fields: [sessions.userId], references: [users.id] }),
-}));
+export const address = pgTable("address", {
+    id: varchar("id", { length: 12 })
+        .primaryKey()
+        .$defaultFn(() => nanoid(12)),
+    userId: varchar("user_id").references(() => user.id),
+    line1: varchar("line1", { length: 30 }).notNull(),
+    line2: varchar("line2", { length: 30 }),
+    city: varchar("city", { length: 20 }).notNull(),
+    state: varchar("state", { length: 20 }).notNull(),
+    pincode: integer("pincode").notNull(),
+})
 
-export const verificationTokens = createTable(
-  "verification_token",
-  {
-    identifier: varchar("identifier", { length: 255 }).notNull(),
-    token: varchar("token", { length: 255 }).notNull(),
-    expires: timestamp("expires", {
-      mode: "date",
-      withTimezone: true,
-    }).notNull(),
-  },
-  (vt) => ({
-    compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
-  })
-);
+export const adressRelation = relations(address, ({ one }) => ({
+    user: one(user, { fields: [address.userId], references: [user.id] })
+}))
+
+export const payment = pgTable("payment", {
+    userId: varchar("user_id").references(() => user.id),
+    upiId: varchar("upi_id")
+},
+    (payment) => ({
+        paymentIdx: unique("payment_idx").on(payment.userId, payment.upiId)
+    })
+)
+
+export const paymentRelations = relations(payment, ({ one }) => ({
+    payment: one(user, { fields: [payment.userId], references: [user.id] })
+}))
+
+export const product = pgTable("product", {
+    id: varchar("id", { length: 12 })
+        .primaryKey()
+        .$defaultFn(() => nanoid(12)),
+    name: varchar("name", { length: 255 }),
+    description: text("description"),
+    price: integer("price"),
+    categoryId: varchar("category_id").references(() => productCategory.id)
+},
+)
+
+export const productRelations = relations(product, ({ many }) => ({
+    productImageRelation: many(productImage),
+    productCategoryRelation: many(productCategory)
+}))
+
+export const productImage = pgTable("product_image", {
+    url: varchar("url"),
+    productId: varchar("producd_id").references(() => product.id)
+},
+    (image) => ({
+        compoundPK: primaryKey({ name: "image_compoundPK", columns: [image.productId, image.url] })
+    })
+)
+
+export const productImageRelations = relations(productImage, ({ one }) => ({
+    productImageRelation: one(product, { fields: [productImage.productId], references: [product.id] })
+}))
+
+export const productCategory = pgTable("product_category", {
+    id: varchar("id", { length: 12 })
+        .primaryKey()
+        .$defaultFn(() => nanoid(12)),
+    name: varchar("name", { length: 255 }).unique(),
+})
+
+export const productCategoryRelations = relations(productCategory, ({ many }) => ({
+    productRelation: many(product)
+}))
+
