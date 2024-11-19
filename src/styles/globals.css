@@ -51,7 +51,15 @@
 
     display: flex;
     align-items: start;
-    gap: 10;
+    gap: 10px;
+}
+
+.swiper-slide > div{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    padding-block: 25px;
 }
 
 .swiper-slide img{
@@ -63,14 +71,6 @@
 .swiper-slide-active img{
    height: 400px;
    width: 300px;
-}
-
-.swiper-slide > div{
-    width: 100%;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    padding-block: 25px;
 }
 
 .swiper-slide .card-info{
