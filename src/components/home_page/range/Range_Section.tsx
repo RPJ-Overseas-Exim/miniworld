@@ -24,24 +24,24 @@ export default function RangeSection() {
                     link="/custom"
                     alt="Custom made miniatures"
                     label="Custom">
-                    "Custom miniatures made to your exact vision—personalized,
-                    detailed, and uniquely yours!"
+                    &quot;Custom miniatures made to your exact vision—personalized,
+                    detailed, and uniquely yours!&quot;
                 </RangeCard>
                 <RangeCard
                     src="/images/category/human.svg"
                     link="/human"
                     alt="Human miniatures"
                     label="Human">
-                    "Adorable, hand-crafted miniatures that look just like
-                    humans—perfectly detailed and full of charm!"
+                    &quot;Adorable, hand-crafted miniatures that look just like
+                    humans—perfectly detailed and full of charm!&quot;
                 </RangeCard>
                 <RangeCard
                     src="/images/category/pre-made.svg"
                     link="/premade"
                     alt="Pre made miniatures"
                     label="Pre-made">
-                    "Bring your favorite anime character to life with this
-                    detailed, hand-crafted miniature!"
+                    &quot;Bring your favorite anime character to life with this
+                    detailed, hand-crafted miniature!&quot;
                 </RangeCard>
             </div>
         </section>

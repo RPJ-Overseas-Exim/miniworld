@@ -1,6 +1,6 @@
-import { relations, SQL, sql } from "drizzle-orm";
+import { relations, type SQL, sql } from "drizzle-orm";
 import {
-    AnyPgColumn,
+    type AnyPgColumn,
     index,
     integer,
     pgTable,
