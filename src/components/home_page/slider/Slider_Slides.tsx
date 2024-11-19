@@ -35,6 +35,9 @@ export default function SwiperSlides(){
            }}
            centeredSlides={true}
            pagination={{clickable: true}}
+           autoplay={{
+               delay: 5000,
+           }}
         >
             {slideImages.map((value, index)=>(
                 <SwiperSlide key={index} >

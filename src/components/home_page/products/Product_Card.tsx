@@ -73,7 +73,7 @@ export function ProductCard({src, alt, title, description, price, width=100, hei
         >
             {/* section on hover */}
             <div className={`${showInfo ? "absolute": "hidden"} bg-[#00000076] w-full h-full flex items-center justify-center`}>
-                <div className="space-y-2">
+                <div className="space-y-2 flex flex-col justify-center">
                     <button
                         type="button"
                         onClick={handleAddToCart}
@@ -85,7 +85,7 @@ export function ProductCard({src, alt, title, description, price, width=100, hei
                     </button>
 
                     <div className="flex justify-center">
-                        <div className="flex flex-col items-start gap-y-[2px]">
+                        <div className="flex items-start gap-x-2">
                             
                             <button
                                 type="button"
