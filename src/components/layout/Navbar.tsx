@@ -10,6 +10,7 @@ export default function Navbar() {
         <nav className="sticky top-0 left-0 w-full bg-white z-[99] flex items-center justify-center px-6 py-4 md:px-4 md:py-5 lg:px-6 ">
             <div className="w-full h-full flex flex-row justify-between items-center">
                 {/* Logo section */}
+
                 <Link
                     href="/"
                     className="flex gap-x-5 items-center">
@@ -24,11 +25,11 @@ export default function Navbar() {
                 </Link>
 
                 {/* Middle navigation section */}
-                <div className="hidden md:flex flex-row md:gap-x-[60px] lg:gap-x-[75px] text-foreground-purple text-[16px]">
-                    <Link href="/">Home</Link>
-                    <Link href="/shop">Shop</Link>
-                    <Link href="/about">About</Link>
-                    <Link href="/contact">Contact</Link>
+                <div className="hidden md:flex flex-row md:gap-x-[60px] lg:gap-x-[75px] ">
+                    <NavLink href="/">Home</NavLink>
+                    <NavLink href="/shop">Shop</NavLink>
+                    <NavLink href="/about">About</NavLink>
+                    <NavLink href="/contact">Contact</NavLink>
                 </div>
 
                 {/* features icon section */}
@@ -37,7 +38,9 @@ export default function Navbar() {
                         <Search />
                     </div>
                     <div className="md:w-[24px] md:h-[24px] lg:w-[28px] lg:h-[28px]">
-                        <ShoppingCart />
+                        <Link href="/cart">
+                            <ShoppingCart />
+                        </Link>
                     </div>
                 </div>
 
@@ -45,5 +48,16 @@ export default function Navbar() {
                 <MenuBox />
             </div>
         </nav>
+    )
+}
+
+function NavLink({ href, children }: { href: string, children: React.ReactNode }) {
+    return (
+        <Link href={href} className="relative text-foreground-purple group overflow-x-hidden">
+            {children}
+            <div className="absolute bottom-0 left-0 transform translate-x-[-100%]
+                duration-500 transition group-hover:transform group-hover:translate-x-full
+                h-1 w-full rounded-full bg-foreground-purple"></div>
+        </Link>
     )
 }
