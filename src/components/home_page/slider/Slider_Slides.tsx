@@ -11,10 +11,11 @@ import { poppinsBold, poppinsRegular } from "public/fonts/fonts";
 
 export default function SwiperSlides(){
     const slideImages = [
-        "/images/slides/slide_1.webp",
-        "/images/slides/slide_2.webp",
-        "/images/slides/slide_3.webp",
-        "/images/slides/slide_4.webp"
+        "/images/slides/hq1.jpg",
+        "/images/slides/hq2.jpg",
+        "/images/slides/hq4.jpg",
+        "/images/slides/hq5.jpg",
+        "/images/slides/hq6.jpg"
     ]
 
     return (
@@ -80,7 +81,7 @@ export function Slide({value}:SlideProps){
 
 export function SlideDetails(){
     return (
-        <div className="bg-[#ffffff72] backdrop-blur-sm min-w-[] w-[217px] h-[135px] flex items-center justify-center">
+        <div className="bg-[#ffffff72] backdrop-blur-md min-w-[] w-[217px] h-[135px] flex items-center justify-center">
             <div className="text-foreground-muted">
                 <h2 className={`${poppinsRegular.className} font-semibold text-[1.1rem] text-center`}>
                     01 - Miniature
