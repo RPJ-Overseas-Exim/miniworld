@@ -30,7 +30,7 @@ export function CardButton({children}: ButtonProps){
 
 export function SliderButton({children}: ButtonProps){
     return (
-        <div className="rounded-md px-3.5 py-2 m-1 relative border-2 font-medium border-border-pink group w-full overflow-hidden">
+        <div className="rounded-md px-3.5 py-2 relative border-2 font-medium border-border-pink group w-full overflow-hidden">
             <span className="absolute w-72 h-0 bg-background-pink top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 transition-all duration-300 ease group-hover:h-72"></span>
             <span className="relative text-foreground-pink group-hover:text-white">
                 {children}

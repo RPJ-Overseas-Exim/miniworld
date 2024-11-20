@@ -15,9 +15,9 @@ export default function Register(){
             <div className="border border-border-muted py-6 px-4 rounded-lg drop-shadow-lg bg-white">
                 <form
                     onSubmit={handleSubmit}
-                    className="flex flex-col gap-y-6 sm:p-4"
+                    className="flex flex-col gap-y-6 sm:p-4 items-center"
                 >
-                    <h2 className={`${poppinsBold.className} text-3xl text-foreground-pink`}>Register</h2>
+                    <h2 className={`${poppinsBold.className} text-3xl text-foreground-pink w-full`}>Register</h2>
 
                     <CustomLabel
                         label="Name"
@@ -46,7 +46,7 @@ export default function Register(){
                         placeholder="Enter your number"
                     />
 
-                    <button type="submit" >
+                    <button type="submit" className="w-full">
                         <SliderButton>
                             <div className="font-semibold text-lg md:text-xl">
                                 Register
