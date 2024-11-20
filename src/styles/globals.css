@@ -23,6 +23,7 @@
         --border-pink: #EE9591;
         --border-purple: #AF52DE;
         --border-blue: #007AFF;
+        --border-muted: #555555;
     }
 
     body{
@@ -37,6 +38,10 @@
             background: linear-gradient(white, #44AEE8 23%, white 41%, var(--primary) 69%, var(--pink) )
         }
     }
+}
+
+.gradient-background{
+    background: linear-gradient(to bottom right, var(--bg-pink) 30% ,white 70%);
 }
 
 .swiper{

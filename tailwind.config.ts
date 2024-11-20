@@ -29,6 +29,7 @@ export default {
                     pink: "var(--border-pink)",
                     purple: "var(--border-purple)",
                     blue: "var(--border-blue)",
+                    muted: "var(--border-muted)",
                 }
             },
             borderRadius:{
