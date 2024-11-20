@@ -59,8 +59,8 @@ export const favProd = pgTable("fav_product", {
     })
 )
 
-export const favProdRelation = relations(favProd, ({one})=>({
-    userFavProd: one(user, {fields:[favProd.userId], references:[user.id]})
+export const favProdRelation = relations(favProd, ({ one }) => ({
+    userFavProd: one(user, { fields: [favProd.userId], references: [user.id] })
 }))
 
 
@@ -100,13 +100,11 @@ export const product = pgTable("product", {
     name: varchar("name", { length: 255 }),
     description: text("description"),
     price: integer("price"),
-    categoryId: varchar("category_id").references(() => productCategory.id)
-},
-)
+})
 
 export const productRelations = relations(product, ({ many }) => ({
     productImageRelation: many(productImage),
-    productCategoryRelation: many(productCategory)
+    productCategoryRelation: many(productsToCategories)
 }))
 
 export const productImage = pgTable("product_image", {
@@ -130,6 +128,32 @@ export const productCategory = pgTable("product_category", {
 })
 
 export const productCategoryRelations = relations(productCategory, ({ many }) => ({
-    productRelation: many(product)
+    productRelation: many(productsToCategories)
 }))
+
+export const productsToCategories = pgTable(
+    'product_to_categories',
+    {
+        productId: varchar('product_id')
+            .notNull()
+            .references(() => product.id),
+        productCategoryId: varchar('product_category_id')
+            .notNull()
+            .references(() => productCategory.id),
+    },
+    (t) => ({
+        pk: primaryKey({ columns: [t.productId, t.productCategoryId] }),
+    }),
+);
+
+export const productToCategoriesRelations = relations(productsToCategories, ({ one }) => ({
+    productCategory: one(productCategory, {
+        fields: [productsToCategories.productCategoryId],
+        references: [productCategory.id],
+    }),
+    product: one(product, {
+        fields: [productsToCategories.productId],
+        references: [product.id],
+    }),
+}));
 
