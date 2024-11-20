@@ -40,7 +40,7 @@ export default function Login(){
                         href="/register"
                         className="text-foreground-muted text-center"
                     >
-                        Don't have an account ? <span className="text-foreground-blue">Create account</span> 
+                        Don't have an account ? <span className="text-foreground-blue">Register</span> 
                     </Link>
                 </form>
             </div>

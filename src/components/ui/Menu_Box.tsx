@@ -1,8 +1,8 @@
 "use client"
 import React from "react"
-import { CrossIcon, House, Info, Menu, Phone, ShoppingBag } from "lucide-react"
+import { CrossIcon, House, Info, Menu, Phone, ShoppingBag, Search, ShoppingCart } from "lucide-react"
 import Link from "next/link"
-import { TwoColorButton } from "./Button"
+import { SliderButton, TwoColorButton } from "./Button"
 
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
@@ -101,7 +101,9 @@ export default function MenuBox(){
                         </Link>
 
                     </div>
+
                 </div>
+
             </div>
         </div>
     )
