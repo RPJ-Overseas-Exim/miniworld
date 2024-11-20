@@ -10,6 +10,8 @@ import {
     unique,
     uniqueIndex,
     varchar,
+    boolean,
+    bigint
 } from "drizzle-orm/pg-core";
 import { nanoid } from "nanoid";
 
@@ -24,13 +26,14 @@ export const user = pgTable("user", {
         .$defaultFn(() => nanoid(12)),
     username: varchar("username", { length: 255 }).notNull(),
     email: varchar("email", { length: 255 }).notNull(),
-    password: varchar("password").notNull(),
-    number: integer("number").notNull(),
+    number: bigint("number", {mode: "bigint"}).notNull(),
     image: varchar("image", { length: 255 }),
+    verified: boolean("verified").default(false),
     verificationOTP: integer("verification_otp")
         .$defaultFn(() => {
             return Math.floor(Math.random() * 9999)
         }),
+    resetToken: integer("reset_token").$defaultFn(()=>Math.floor(Math.random() * 100000)),
     createdAt: timestamp("created_at", { withTimezone: true })
         .default(sql`CURRENT_TIMESTAMP`)
         .notNull(),
