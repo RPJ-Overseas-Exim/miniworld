@@ -3,9 +3,11 @@ import Link from "next/link"
 import { ArrowButton } from "~/components/ui/Button"
 import { poppinsBold, poppinsRegular } from "public/fonts/fonts"
 import { db } from "~/server/db"
+import { type productType } from "~/lib/types/Product"
+import { ProductList } from "~/components/ProductList"
 
 export default async function Products() {
-    let products;
+    let products: productType[] = [];
     try {
         products = await db.query.product.findMany({
             with: {
@@ -24,6 +26,9 @@ export default async function Products() {
             </h2>
 
             {/* cards section */}
+            {
+             <ProductList products={products}/>
+            }
 
             {/* button section */}
             <div className="flex items-center justify-center">

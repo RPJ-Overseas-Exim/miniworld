@@ -1,7 +1,8 @@
 import React from "react"
 import { ProductCard } from "~/components/home_page/products/Product_Card"
+import { productType } from "~/lib/types/Product"
 
-export function ProductList (products){
+export function ProductList ({products}:{products:productType[]}){
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-2">
             {

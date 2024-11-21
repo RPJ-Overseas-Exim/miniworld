@@ -1,11 +1,11 @@
-type productType = {
-    id: string,
-    name: string,
-    description: string,
-    price: number,
-    likes: number,
-    productImageRelations: {
-        id:string
-        url:string
+export type productType = {
+    id: string | null,
+    name: string | null,
+    description: string | null,
+    price: number | null,
+    likes: number | null,
+    productImageRelation: {
+        productId:string | null;
+        url:string | null;
     }[]
 }
