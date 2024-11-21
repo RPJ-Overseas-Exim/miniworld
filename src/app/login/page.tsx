@@ -30,7 +30,7 @@ export default function Login(){
                     
                     <button type="submit" className="w-full" >
                         <SliderButton>
-                            <div className="font-semibold text-lg md:text-xl">
+                            <div className="font-semibold text-lg md:text-xl w-full">
                                 Login
                             </div>
                         </SliderButton>

@@ -4,7 +4,7 @@ import { poppinsBold, poppinsRegular } from "public/fonts/fonts"
 
 export default function RangeSection() {
     return (
-        <section className="w-full space-y-4 sm:space-y-6">
+        <section className="w-full space-y-4 sm:space-y-6 my-16">
             {/* heading section */}
             <div className="max-w-[85%] m-auto space-y-2 mt-4">
                 <h2 className={`text-foreground-blue text-center text-[24px] md:text-[32px]

@@ -19,7 +19,6 @@ export function lower(email: AnyPgColumn): SQL {
     return sql`lower(${email})`;
 }
 
-
 export const user = pgTable("user", {
     id: varchar("id", { length: 12 })
         .primaryKey()
@@ -29,7 +28,7 @@ export const user = pgTable("user", {
     number: bigint("number", {mode: "bigint"}).notNull(),
     image: varchar("image", { length: 255 }),
     verified: boolean("verified").default(false),
-    verificationOTP: integer("verification_otp")
+    OTP: integer("otp")
         .$defaultFn(() => {
             return Math.floor(Math.random() * 9999)
         }),
@@ -103,6 +102,7 @@ export const product = pgTable("product", {
     name: varchar("name", { length: 255 }),
     description: text("description"),
     price: integer("price"),
+    likes: integer("likes").default(0),
 })
 
 export const productRelations = relations(product, ({ many }) => ({

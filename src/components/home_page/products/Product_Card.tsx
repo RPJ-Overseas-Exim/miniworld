@@ -11,31 +11,31 @@ import { poppinsRegular } from "public/fonts/fonts";
 gsap.registerPlugin(ScrollTrigger)
 
 export interface ProductCardProps {
-   src: string;
-   alt: string;
-   width?: number;
-   height?: number;
-   title: string;
-   description: string;
-   price: string;
+    src: string;
+    alt: string;
+    width?: number;
+    height?: number;
+    title: string;
+    description: string;
+    price: string;
 }
 
-export function ProductCard({src, alt, title, description, price, width=100, height=100}: ProductCardProps){
+export function ProductCard({ src, alt, title, description, price}: ProductCardProps) {
     const [showInfo, setShowInfo] = React.useState<boolean>(false)
 
-    {/* hovering effect handler functions */}
-    const handleMouseOver = ()=>{
+    {/* hovering effect handler functions */ }
+    const handleMouseOver = () => {
         setShowInfo(true)
     }
 
-    const handleMouseLeave = ()=>{
+    const handleMouseLeave = () => {
         setShowInfo(false)
     }
 
-    {/* Product card animation section */}
+    {/* Product card animation section */ }
     const productCardRef = React.useRef<HTMLDivElement>(null)
-    
-    useGSAP(()=>{
+
+    useGSAP(() => {
         gsap.from(productCardRef.current, {
             y: 120,
             opacity: 0,
@@ -50,29 +50,29 @@ export function ProductCard({src, alt, title, description, price, width=100, hei
     })
 
 
-    {/* actions handler functions */}
-    const handleAddToCart = ()=>{
+    {/* actions handler functions */ }
+    const handleAddToCart = () => {
         console.log("Add to cart clicked")
     }
 
-    const handleProductShare = ()=>{
+    const handleProductShare = () => {
         console.log("Product share clicked")
     }
 
-    const handleProductLike = ()=>{
+    const handleProductLike = () => {
         console.log("Product Like clicked")
     }
 
-    
+
     return (
         <div
             ref={productCardRef}
             onMouseLeave={handleMouseLeave}
             onMouseOver={handleMouseOver}
-            className="relative w-[150px] h-[280px] sm:w-[200px] sm:h-[320px] md:w-[220px] md:h-[400px] lg:w-[285px] lg:h-[446px] overflow-hidden bg-white"
+            className="relative overflow-hidden bg-white"
         >
             {/* section on hover */}
-            <div className={`${showInfo ? "absolute": "hidden"} bg-[#00000076] w-full h-full flex items-center justify-center`}>
+            <div className={`${showInfo ? "absolute" : "hidden"} bg-[#00000076] w-full h-full flex items-center justify-center z-[2]`}>
                 <div className="space-y-2 flex flex-col justify-center">
                     <button
                         type="button"
@@ -86,7 +86,7 @@ export function ProductCard({src, alt, title, description, price, width=100, hei
 
                     <div className="flex justify-center">
                         <div className="flex items-start gap-x-2">
-                            
+
                             <button
                                 type="button"
                                 className="text-white md:text-lg flex items-center gap-x-2 w-[max-content]"
@@ -110,19 +110,20 @@ export function ProductCard({src, alt, title, description, price, width=100, hei
             </div>
 
             {/* image section */}
-            <Image
-                src={src}
-                alt={alt}
-                width={width}
-                height={height}
-                className="w-full"
-            />
+            <div className="relative h-[70vw] max-h-[300px] z-[1]">
+                <Image
+                    src={src}
+                    alt={alt}
+                    fill
+                    className="object-cover object-center"
+                />
+            </div>
 
             {/* card details section */}
             <div className={`w-full flex flex-col gap-y-2 text-foreground-muted py-4 px-2 ${poppinsRegular.className}`}>
-                <div className="text-base md:text-xl lg:text-[1.6rem] font-semibold">{title}</div>
-                <div className="text-xs md:text-base lg:text-[1rem] font-medium">{description}</div>
-                <div className="text-base md:text-xl lg:text-[1.2rem] font-semibold">Rs. {price}</div>
+                <div className="text-sm md:text-xl font-semibold">{title.split(" ").slice(0, 3).join(" ") + "..."}</div>
+                <div className="text-xs md:text-base lg:text-[1rem] font-medium">{description.slice(0, 50) + "..."}</div>
+                <div className="text-sm md:text-xl lg:text-[1.2rem] font-semibold">Rs. {price}</div>
             </div>
         </div>
     )

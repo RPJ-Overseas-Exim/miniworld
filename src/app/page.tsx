@@ -10,7 +10,7 @@ export default function HomePage() {
         <HeroSection />
         <div className="home-gradient z-[4]">
             <RangeSection />
-            <div className="flex flex-col gap-y-8 sm:gap-y-10">
+            <div className="flex flex-col gap-y-16 ">
                 <ProductSection />
                 <SliderSection />
             </div>

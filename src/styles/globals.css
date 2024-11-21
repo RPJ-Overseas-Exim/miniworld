@@ -31,12 +31,7 @@
     }
 
     .home-gradient{
-        background: linear-gradient(white, #44AEE8 23%, white 41%, var(--primary) 69%, var(--pink) )
-    }
-    @media only screen and (min-width:740px){
-        .home-gradient{
-            background: linear-gradient(white, #44AEE8 23%, white 41%, var(--primary) 69%, var(--pink) )
-        }
+        background: linear-gradient(white, #44AEE8 23%, white 55%, var(--primary) 75%, var(--pink) )
     }
 }
 
