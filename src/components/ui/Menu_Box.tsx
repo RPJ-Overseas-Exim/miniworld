@@ -1,8 +1,8 @@
 "use client"
 import React from "react"
-import { CrossIcon, House, Info, Menu, Phone, ShoppingBag, Search, ShoppingCart } from "lucide-react"
+import { CrossIcon, House, Info, Menu, Phone, ShoppingBag } from "lucide-react"
 import Link from "next/link"
-import { SliderButton, TwoColorButton } from "./Button"
+import { TwoColorButton } from "./Button"
 
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
@@ -61,7 +61,7 @@ export default function MenuBox(){
                     <div className="flex flex-col gap-y-[50px] text-foreground-pink font-bold text-[28px] pr-[50px]">
                         
                         {/* Home button */}
-                        <Link href="/home">
+                        <Link href="/" onClick={hideMenuBox}>
                             <TwoColorButton>
                                 <div className="flex gap-x-2 items-center">
                                     <House className="" width={38} height={38} />
@@ -71,7 +71,7 @@ export default function MenuBox(){
                         </Link>
 
                         {/* Shop button */}
-                        <Link href="/shop">
+                        <Link href="/shop" onClick={hideMenuBox}>
                             <TwoColorButton>
                                 <div className="flex gap-x-2 items-center">
                                     <ShoppingBag width={38} height={38} />
@@ -81,7 +81,7 @@ export default function MenuBox(){
                         </Link>
 
                         {/* About button */}
-                        <Link href="/about">
+                        <Link href="/about" onClick={hideMenuBox}>
                             <TwoColorButton>
                                 <div className="flex gap-x-2 items-center">
                                     <Info width={38} height={38} />
@@ -91,7 +91,7 @@ export default function MenuBox(){
                         </Link>
 
                         {/* Contact button */}
-                        <Link href="/contact">
+                        <Link href="/contact" onClick={hideMenuBox}>
                             <TwoColorButton>
                                 <div className="flex gap-x-2 items-center">
                                     <Phone width={38} height={38} />

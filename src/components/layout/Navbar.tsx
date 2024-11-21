@@ -25,7 +25,7 @@ export default function Navbar() {
                 </Link>
 
                 {/* Middle navigation section */}
-                <div className="hidden md:flex flex-row md:gap-x-12 lg:gap-x-16 ">
+                <div className="hidden md:flex flex-row md:gap-x-12 lg:gap-x-16 text-foreground-purple">
                     <NavLink href="/">Home</NavLink>
                     <NavLink href="/shop">Shop</NavLink>
                     <NavLink href="/about">About</NavLink>
