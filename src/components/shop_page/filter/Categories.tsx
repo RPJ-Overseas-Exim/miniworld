@@ -1,40 +1,32 @@
 "use client"
-import React from "react"
+import React, { useEffect } from "react"
+import { useRouter, useSearchParams } from "next/navigation";
+import CategoryButton from "./Category_button";
 
 export default function Categories(){
+    const router = useRouter()
+    const searchParams = useSearchParams()
+    const [category, setCategory] = React.useState<string>("")
+
+    const handleOnClick = (label: string)=>{
+       const filterParams = new URLSearchParams(searchParams)
+       filterParams.set("category", label.toLowerCase())
+       setCategory(label)
+       router.push("/shop?"+filterParams.toString())
+    }
+
+    useEffect(()=>{
+        setCategory(searchParams.get("category") as string)
+    }, [searchParams])
+
     return (
         <div className="w-full hidden lg:flex px-4 py-2 flex-row items-center gap-x-2">
-            <CategoryButton>
-                <div>All</div>
-            </CategoryButton>
-
-            <CategoryButton>
-                <div>Human</div>
-            </CategoryButton>
-
-            <CategoryButton>
-                <div>Animals</div>
-            </CategoryButton>
-
-            <CategoryButton>
-                <div>Cars</div>
-            </CategoryButton>
-
-            <CategoryButton>
-                <div>Anime</div>
-            </CategoryButton>
+            <CategoryButton label="All" isActive={category === "all" || category === ""} handleOnClick={handleOnClick} />
+            <CategoryButton label="Human" isActive={category === "human"} handleOnClick={handleOnClick}  />
+            <CategoryButton label="Animal" isActive={category === "animal"} handleOnClick={handleOnClick}  />
+            <CategoryButton label="Anime" isActive={category === "anime"} handleOnClick={handleOnClick}  />
+            <CategoryButton label="Cartoon" isActive={category === "cartoon"} handleOnClick={handleOnClick}  />
         </div>
     )
 }
 
-interface CategoryButtonProps{
-    children: React.ReactNode;
-}
-
-export function CategoryButton({children}:CategoryButtonProps){
-    return (
-        <button type="button" className="bg-background-pink px-2 py-1 rounded-lg text-sm text-white">
-            {children}
-        </button>
-    )
-}

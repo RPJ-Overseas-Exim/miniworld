@@ -4,7 +4,7 @@ import { productType } from "~/lib/types/Product"
 
 export function ProductList ({products}:{products:productType[]}){
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-2">
             {
                 products && products.map((product) => (
                     <ProductCard
