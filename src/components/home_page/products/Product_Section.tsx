@@ -26,9 +26,7 @@ export default async function Products() {
             </h2>
 
             {/* cards section */}
-            {
-             <ProductList products={products}/>
-            }
+            <ProductList products={products}/>
 
             {/* button section */}
             <div className="flex items-center justify-center">

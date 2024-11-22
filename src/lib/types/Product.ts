@@ -4,8 +4,12 @@ export type productType = {
     description: string | null,
     price: number | null,
     likes: number | null,
-    productImageRelation: {
+    productImageRelation?: {
         productId:string | null;
         url:string | null;
-    }[]
+    }[];
+    productCategoryRelation?: {
+        productId: string;
+        productCategoryId: string;
+    }[];
 }

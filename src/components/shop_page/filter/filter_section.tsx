@@ -1,24 +1,19 @@
 "use client"
-import { SlidersHorizontal } from "lucide-react"
 import { poppinsRegular } from "public/fonts/fonts"
 import React from "react"
+import Categories from "./Categories"
+import Filters from "./Filters"
 
 export default function FilterSection(){
     return (
-        <div className="sticky bg-[#F9F1E7] px-6 py-4">
+        <div className="bg-[#F9F1E7] px-6 py-4">
             <div className={`flex text-black justify-between ${poppinsRegular.className} text-sm`}>
 
                 {/* filter button */}
-                <div className="flex items-center gap-x-4">
-                    <button type="button">
-                        <SlidersHorizontal className="text-black" />
-                    </button>
+                <Filters />
 
-                    <h2 className="text-black text-xl">
-                        Filter
-                    </h2>
-                </div>
-
+                {/* category buttons */}
+                <Categories />
 
                 {/* sort by section */}
                 <div className="flex gap-x-2 items-center">
@@ -28,7 +23,6 @@ export default function FilterSection(){
                             <option>Price</option>
                             <option>like</option>
                         </select>
-                        
                     </form>
                 </div>
 
@@ -36,3 +30,4 @@ export default function FilterSection(){
         </div>
     )
 }
+

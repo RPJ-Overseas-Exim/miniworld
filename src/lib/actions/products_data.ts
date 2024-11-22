@@ -1,26 +1,5 @@
 import { db } from "~/server/db";
-
-export interface ProductType{
-    id: string;
-    name: string | null;
-    description: string | null;
-    price: number | null;
-    likes: number | null;
-}
-
-export interface ProductWithImagesType extends ProductType{
-    productImageRelation: {
-        productId: string | null;
-        url: string | null;
-    }[];
-}
-
-export interface ProductWithCategoryType extends ProductType{
-    productCategoryRelation: {
-        productId: string;
-        productCategoryId: string;
-    }[];
-}
+import {productType} from "../types/Product";
 
 interface ProductDataProps{
     limit?: number;
@@ -29,7 +8,7 @@ interface ProductDataProps{
 }
 
 export async function getProductData({limit, withImages = false, withCategories = false}:ProductDataProps){
-    let query: ProductType[] | ProductWithImagesType[] | ProductWithCategoryType[] = [];
+    let query: productType[] = [];
     try{
 
         query = await db.query.product.findMany({

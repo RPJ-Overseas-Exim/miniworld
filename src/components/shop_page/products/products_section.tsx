@@ -1,9 +1,15 @@
 import React from "react"
+import { ProductList } from "~/components/ProductList";
+import { productType } from "~/lib/types/Product";
 
-export default function ProductSection(){
+interface ProductSectionProps{
+    products: productType[];
+}
+
+export default function ProductSection({products}: ProductSectionProps){
     return (
-        <section>
-            <h2>Product section</h2>
+        <section className="px-4 py-6">
+            <ProductList products={products} />
         </section>
     )
 }
