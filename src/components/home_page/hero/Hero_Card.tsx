@@ -2,7 +2,7 @@
 import React from "react"
 import {useGSAP} from "@gsap/react"
 import gsap from "gsap"
-import { montserratVariable, poppinsRegular } from "public/fonts/fonts"
+import { montserratVariable, poppinsBold, poppinsRegular } from "public/fonts/fonts"
 
 export function HeroCard(){
     const heroCardRef = React.useRef<HTMLDivElement>(null)
@@ -67,7 +67,7 @@ export function HeroCard(){
                 className="rounded-md px-6 py-3 lg:px-[4.5rem] lg:py-[1.5625rem] w-[max-content] bg-background-pink"
                 onClick={()=>handleBuyNow()}
             >
-                <span className="font-bold text-[12px] lg:text-[16px] text-white uppercase">
+                <span className={"font-bold text-[12px] lg:text-[16px] text-white uppercase " + poppinsBold.className}>
                     Buy Now
                 </span>
             </button>

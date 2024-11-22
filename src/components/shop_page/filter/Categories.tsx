@@ -1,31 +1,27 @@
 "use client"
-import React, { useEffect } from "react"
+import React from "react"
 import { useRouter, useSearchParams } from "next/navigation";
 import CategoryButton from "./Category_button";
 
 export default function Categories(){
     const router = useRouter()
     const searchParams = useSearchParams()
-    const [category, setCategory] = React.useState<string>("")
+    const [category, setCategory] = React.useState<string>(searchParams.get("category") ?? "")
 
     const handleOnClick = (label: string)=>{
+       setCategory(label)
        const filterParams = new URLSearchParams(searchParams)
        filterParams.set("category", label.toLowerCase())
-       setCategory(label)
-       router.push("/shop?"+filterParams.toString())
+       router.push("/shop?"+ filterParams.toString())
     }
-
-    useEffect(()=>{
-        setCategory(searchParams.get("category") as string)
-    }, [searchParams])
 
     return (
         <div className="w-full hidden lg:flex px-4 py-2 flex-row items-center gap-x-2">
-            <CategoryButton label="All" isActive={category === "all" || category === ""} handleOnClick={handleOnClick} />
-            <CategoryButton label="Human" isActive={category === "human"} handleOnClick={handleOnClick}  />
-            <CategoryButton label="Animal" isActive={category === "animal"} handleOnClick={handleOnClick}  />
-            <CategoryButton label="Anime" isActive={category === "anime"} handleOnClick={handleOnClick}  />
-            <CategoryButton label="Cartoon" isActive={category === "cartoon"} handleOnClick={handleOnClick}  />
+            <CategoryButton label="All" isActive={searchParams.get("category") === "all" || category === ""} handleOnClick={handleOnClick} />
+            <CategoryButton label="Human" isActive={searchParams.get("category")=== "human"} handleOnClick={handleOnClick}  />
+            <CategoryButton label="Animal" isActive={searchParams.get("category") === "animal"} handleOnClick={handleOnClick}  />
+            <CategoryButton label="Anime" isActive={searchParams.get("category") === "anime"} handleOnClick={handleOnClick}  />
+            <CategoryButton label="Cartoon" isActive={searchParams.get("category") === "cartoon"} handleOnClick={handleOnClick}  />
         </div>
     )
 }
