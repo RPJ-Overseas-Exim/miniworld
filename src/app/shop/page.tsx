@@ -5,8 +5,21 @@ import ProductSection from "~/components/shop_page/products/products_section"
 import BottomBannerSection from "~/components/shop_page/bottom_banner/bottom_banner_section"
 import { getProductData } from "~/lib/actions/products_data"
 
-export default async function Shop(){
-    const products = await getProductData({limit: 25, withImages: true, withCategories: true})
+export default async function Shop({
+    searchParams
+}: {
+    searchParams: Promise<{[key: string]: string | string[] | undefined}>;
+}){
+
+    const {category, sortBy, ascending} = await searchParams
+
+    const products = await getProductData({
+        limit: 12,
+        withImages: true,
+        withCategories: true,
+        orderBy: sortBy as string,
+        ascending: ascending === "false" ? false : true,
+    })
 
     return (
         <main className="flex flex-col">

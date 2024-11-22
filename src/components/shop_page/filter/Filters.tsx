@@ -8,7 +8,7 @@ export default function Filters(){
                 <SlidersHorizontal className="text-black" />
             </button>
 
-            <h2 className="text-black text-xl">
+            <h2 className="text-black text-base sm:text-xl">
                 Filter
             </h2>
 
