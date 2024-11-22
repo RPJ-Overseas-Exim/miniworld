@@ -8,7 +8,7 @@ import CustomLabel from "~/components/login/customLabel"
 export default function Login(){
     {/* functionality section of login */}
     const handleSubmit = ()=>{
-
+        console.log("handle submission of form")
     }
 
     return (

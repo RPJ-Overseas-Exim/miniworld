@@ -8,7 +8,7 @@ import CustomLabel from "~/components/login/customLabel";
 export default function Register(){
     {/* functionality of register page */}
     const handleSubmit = ()=>{
-        
+        console.log("handle register")
     }
 
     return (

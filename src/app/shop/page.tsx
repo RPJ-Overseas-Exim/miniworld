@@ -8,7 +8,7 @@ import { getProductData } from "~/lib/actions/products_data"
 export default async function Shop({
     searchParams
 }: {
-    searchParams: Promise<{[key: string]: string | string[] | undefined}>;
+    searchParams: Promise<Record<string, string | string[] | undefined>>;
 }){
 
     const {category, sortBy, ascending} = await searchParams

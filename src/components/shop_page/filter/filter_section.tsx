@@ -3,7 +3,7 @@ import { poppinsRegular } from "public/fonts/fonts"
 import React from "react"
 import Categories from "./Categories"
 import Filters from "./Filters"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 export default function FilterSection(){
     return (
