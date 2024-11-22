@@ -1,21 +1,11 @@
 import React from "react"
-import Image from "next/image"
 import { poppinsRegular } from "public/fonts/fonts"
 import { ChevronRight } from "lucide-react"
 
 export default function ImageSection(){
     return (
         <section>
-            <div className="relative">
-                {/* image of background */}
-                <Image
-                    src="/images/shop/hero-img.svg"
-                    alt="Shop hero image"
-                    width={100}
-                    height={100}
-                    className="w-full h-full object-cover object-center min-h-[300px]"
-                />
-
+            <div className="relative bg-[url('/images/shop/hero-img.svg')] min-h-[300px] object-center object-cover">
                 {/* content section */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
                     <h2 className={`${poppinsRegular.className} font-medium text-4xl md:text-5xl text-center`}>
