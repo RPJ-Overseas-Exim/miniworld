@@ -21,6 +21,7 @@ export default {
                     muted: "var(--foreground-muted)"
                 },
                 background: {
+                    muted:"var(--muted)",
                     pink: "var(--bg-pink)",
                     purple: "var(--bg-purple)",
                     blue: "var(--bg-blue)",
@@ -35,7 +36,7 @@ export default {
             borderRadius:{
                 footer: "0 6em 0 0"
             }
-        },
+        }
     },
     plugins: [],
 } satisfies Config;

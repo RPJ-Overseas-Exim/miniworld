@@ -20,6 +20,7 @@ export default async function Products() {
     }
     return (
         <section className="px-6 sm:px-8 md:px-10 space-y-8 z-[4]">
+
             {/* heading section */}
             <h2 className={`text-foreground-blue text-center font-bold text-[28px] md:text-[32px] drop-shadow-md ${poppinsBold.className}`}>
                 Our Products
