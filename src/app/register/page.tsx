@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link";
-import { poppinsBold } from "public/fonts/fonts";
+import { poppinsBold, poppinsRegular } from "public/fonts/fonts";
 import React, { useActionState } from "react"
 import { SliderButton } from "~/components/ui/Button";
 import { z } from "zod"
@@ -41,7 +41,6 @@ export default function Register() {
             return {success:true, message: "Registration successful"}
         }
         return {success:false, message:"Registration failed"}
->>>>>>> 9abf085 (added productSlider to product page)
     }
 
     const [data, formAction, isPending] = useActionState(handleSubmit, { success: false, message: "" })
@@ -113,8 +112,6 @@ export default function Register() {
     )
 }
 
-<<<<<<< HEAD
-=======
 interface CustomLabelProps {
     label: string;
     labelFor: string;
@@ -147,4 +144,3 @@ export function CustomLabel({
         </div>
     )
 }
->>>>>>> 9abf085 (added productSlider to product page)
