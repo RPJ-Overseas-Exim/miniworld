@@ -19,9 +19,9 @@ export async function getProductDetails({
     ascending = true,
 }:ProductDataProps){
 
-        let result: productType[]= []
-        let totalResult: number = 0
-        let returnResult: number = 0
+        let result: productType[] = []
+        let totalResult = 0
+        let returnResult = 0
 
         try{
 
@@ -42,7 +42,7 @@ export async function getProductDetails({
 
                     // add the new row in data
                     if(!acc[product.id]){
-                        let productDetail = {
+                        const productDetail = {
                             id: product.id,
                             name: product.name,
                             description: product.description,

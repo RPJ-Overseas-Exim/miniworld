@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import React from "react"
 import { ProductSlider } from "~/components/shop_page/product/ProductSlider";
-import { Star } from "~/components/shop_page/product/Star";
+import ReviewStar from "./ReviewStar";
 import { BreadCrumbs } from "~/components/ui/Bread_crumbs";
 import { Spinner } from "~/components/ui/Spinner";
 import { productType } from "~/lib/types/Product";
@@ -93,26 +93,5 @@ export default async function ProductPage({
                 </div>
             </div>
         </section >
-    )
-}
-
-export function ReviewStar({ star }: { star: number }) {
-    if (star > 0.5 && star < 1) {
-        return (
-            <Star width={12} pos="right" />
-        )
-    }
-
-    if (star < 0.5 && star > 0) {
-        return (
-            <Star width={6} pos="left" />
-        )
-    }
-    if (star === 0.5) {
-        return <Star width={8} pos="left" />
-    }
-
-    return (
-        <Star />
     )
 }
