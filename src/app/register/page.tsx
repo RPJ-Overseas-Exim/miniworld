@@ -6,7 +6,11 @@ import { SliderButton } from "~/components/ui/Button";
 import { z } from "zod"
 import { registerFormSchema } from "~/lib/types/User";
 import { postUserData } from "~/server/actions/actions";
+<<<<<<< HEAD
 import CustomLabel from "~/components/login/customLabel"
+=======
+import { CustomLabel } from "./CustomLabel"
+>>>>>>> d9e5e72 (switched the product carousel to embla carousel)
 
 
 export default function Register() {
