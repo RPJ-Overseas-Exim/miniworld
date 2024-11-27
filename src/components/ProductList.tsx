@@ -27,7 +27,7 @@ export function ShopProductList ({products}:{products: Record<string, productTyp
             {
                 products && Object.keys(products)?.map((key, _) => (
                     <ProductCard
-                        key={products[key]?.id as string}
+                        key={String(products[key]?.id)}
                         src={products[key]?.productImageRelation?.[0]?.url ?? "/images/wip.png"}
                         alt=""
                         title={products[key]?.name ?? "Untitled"}

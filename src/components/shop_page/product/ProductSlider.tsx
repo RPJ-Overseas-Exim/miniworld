@@ -22,7 +22,7 @@ function Slides({ images }: { images: { url: string | null, productId: string | 
     return (
         <>
             {
-                images && images.map((image, index) => {
+                images && images?.map((image, index) => {
                     if (!image.url) {
                         return
                     }

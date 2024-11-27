@@ -19,7 +19,7 @@ export async function getProductDetails({
     ascending = true,
 }:ProductDataProps){
 
-        let result: productType[] = []
+        const result: productType[] = []
         let totalResult = 0
         let returnResult = 0
 

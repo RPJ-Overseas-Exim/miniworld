@@ -39,11 +39,11 @@ export default async function ProductPage({
         if(queryResult[0]?.product){
             const { id, name, description, price, likes } = queryResult[0]?.product
             ProductResult = {id, name, description, price, likes} 
-            ProductResult.productImageRelation = [{url:queryResult[0]?.product_image?.url as string || "/image/wip.png", productId: id}]
+            ProductResult.productImageRelation = [{url: queryResult[0]?.product_image?.url as string ?? "/image/wip.png", productId: id}]
 
             queryResult.forEach(result=>{
                 if(ProductResult.productImageRelation){
-                    ProductResult.productImageRelation.push({url:result?.product_image?.url || null, productId:result.product.id})
+                    ProductResult.productImageRelation.push({url:result?.product_image?.url ?? null, productId:result.product.id})
                 }
             })
         }
@@ -67,7 +67,7 @@ export default async function ProductPage({
 
             <div className="flex flex-col md:flex-row gap-12 my-8 px-[var(--px-xs)] sm:px-[var(--px-sm)] md:px-[var(--px-md)] lg:px-[var(--px-lg)]">
                 <div className="md:w-1/2 h-64 max-w-lg">
-                    <ProductSlider productImages={ProductResult.productImageRelation || []}/>
+                    <ProductSlider productImages={ProductResult.productImageRelation ?? []}/>
                 </div>
                 <div className="md:w-1/2 mt-2">
                     <h2 className="text-lg">
