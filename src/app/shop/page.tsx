@@ -3,7 +3,7 @@ import ImageSection from "~/components/shop_page/banner/image_section"
 import FilterSection from "~/components/shop_page/filter/filter_section"
 import ProductSection from "~/components/shop_page/products/products_section"
 import BottomBannerSection from "~/components/shop_page/bottom_banner/bottom_banner_section"
-import { getProductData } from "~/lib/actions/products_data"
+import { getProductDetails } from "~/lib/actions/products_data"
 
 export default async function Shop({
     searchParams
@@ -13,10 +13,9 @@ export default async function Shop({
 
     const {category, sortBy, ascending} = await searchParams
 
-    const products = await getProductData({
+    const {products, totalResult, returnResult} = await getProductDetails({
         limit: 12,
-        withImages: true,
-        withCategories: true,
+        category: category === "all" ? "" : category as string,
         orderBy: sortBy as string,
         ascending: ascending === "false" ? false : true,
     })

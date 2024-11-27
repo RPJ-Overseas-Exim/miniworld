@@ -1,7 +1,7 @@
 import { db } from "~/server/db";
 import {productType} from "../types/Product";
-import { product } from "~/server/db/schema";
-import { asc, desc } from "drizzle-orm";
+import { product, productCategory, productsToCategories, productImage } from "~/server/db/schema";
+import { asc, desc, eq, like } from "drizzle-orm";
 
 interface ProductDataProps{
     limit?: number;
@@ -12,33 +12,74 @@ interface ProductDataProps{
     ascending?: boolean;
 }
 
-export async function getProductData({
-    limit,
-    category,
-    withImages = false,
-    withCategories = false,
+export async function getProductDetails({
+    limit = 100,
+    category = "",
     orderBy = "name",
     ascending = true,
 }:ProductDataProps){
-    let query: productType[] = [];
-    try{
 
-        query = await db.query.product.findMany({
-            with: {
-                ...(withImages && {productImageRelation: true}),
-                ...(withCategories && {productCategoryRelation: true}),
-            },
-            ...(limit && {limit: limit}),
-            ...(category && withCategories && {}),
-            orderBy: getOrderBy(orderBy, ascending),
-        })
+        let result: productType[]= []
+        let totalResult: number = 0
+        let returnResult: number = 0
 
-    }catch(err){
-        console.log("In product data: ", err)
+        try{
+
+            // get all the data
+            const rows = await db.select().from(product)
+                .innerJoin(productsToCategories, eq(productsToCategories.productId, product.id))
+                .innerJoin(productCategory, eq(productCategory.id, productsToCategories.productCategoryId))
+                .leftJoin(productImage, eq(productImage.productId, product.id))
+                .where(like(productCategory.name, `%${category}%`))
+                .orderBy(getOrderBy(orderBy, ascending))
+
+            // reduce the data 
+            rows.reduce<Record<string, productType>>(
+                (acc, row)=>{
+                    const product = row.product
+                    const image = row.product_image
+                    //const category = row.product_category
+
+                    // add the new row in data
+                    if(!acc[product.id]){
+                        let productDetail = {
+                            id: product.id,
+                            name: product.name,
+                            description: product.description,
+                            likes: product.likes,
+                            price: product.price,
+                            productImageRelation: [],
+                            productCategoryRelation: [],
+                        }
+
+                        acc[product.id] = productDetail
+                        totalResult += 1
+
+                        if(returnResult < limit){
+                            returnResult += 1
+                            result.push(productDetail)
+                        }
+                    }
+
+                    // add image to the existing row in data
+                    if(image?.url){
+                        acc[product.id]?.productImageRelation?.push({
+                            productId: product.id,
+                            url: image.url,
+                        })
+                    }
+
+                    return acc
+                },
+                {}
+            )
+
+        }catch(err){
+            console.log(err)
+        }
+
+        return { products: result, totalResult, returnResult }
     }
-
-    return query;
-}
 
 function getOrderBy(value: string, ascending: boolean){
   if(value === "price"){
