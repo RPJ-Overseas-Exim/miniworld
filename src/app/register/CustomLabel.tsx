@@ -1,5 +1,5 @@
 import React from "react"
-import {poppinsRegular } from "@/public/fonts/fonts.ts"
+import { poppinsRegular } from "public/fonts/fonts"
 
 interface CustomLabelProps {
     label: string;
