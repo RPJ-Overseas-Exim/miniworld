@@ -19,15 +19,9 @@ export async function getProductDetails({
     ascending = true,
 }:ProductDataProps){
 
-<<<<<<< HEAD
         const result: productType[] = []
         let totalResult = 0
         let returnResult = 0
-=======
-        const result: productType[]= []
-        let totalResult= 0
-        let returnResult= 0
->>>>>>> d9e5e72 (switched the product carousel to embla carousel)
 
         try{
 
