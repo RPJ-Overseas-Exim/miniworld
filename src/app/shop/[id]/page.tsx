@@ -4,7 +4,7 @@ import { ProductSlider } from "~/components/shop_page/product/ProductSlider";
 import ReviewStar from "./ReviewStar";
 import { BreadCrumbs } from "~/components/ui/Bread_crumbs";
 import { Spinner } from "~/components/ui/Spinner";
-import { productType } from "~/lib/types/Product";
+import { type productType } from "~/lib/types/Product";
 import { cn } from "~/lib/utils";
 import { db } from "~/server/db";
 import { product, productImage, productsToCategories } from "~/server/db/schema";
@@ -39,7 +39,7 @@ export default async function ProductPage({
         if(queryResult[0]?.product){
             const { id, name, description, price, likes } = queryResult[0]?.product
             ProductResult = {id, name, description, price, likes} 
-            ProductResult.productImageRelation = [{url: queryResult[0]?.product_image?.url as string ?? "/image/wip.png", productId: id}]
+            ProductResult.productImageRelation = [{url: queryResult[0]?.product_image?.url ?? "/image/wip.png", productId: id}]
 
             queryResult.forEach(result=>{
                 if(ProductResult.productImageRelation){
@@ -78,7 +78,7 @@ export default async function ProductPage({
                         <p className="text-xs">{rating}</p>
                         <div className="flex gap-2 my-4">
                             {
-                                [...Array(Math.floor(rating))].map((_, index) => {
+                                [...[1, 2, 3, 4]].map((_, index) => {
                                     return (
                                         <ReviewStar star={1} key={index} />
                                     )
@@ -95,28 +95,3 @@ export default async function ProductPage({
         </section >
     )
 }
-<<<<<<< HEAD
-=======
-
-export function ReviewStar({ star }: { star: number }) {
-    if (star > 0.5 && star < 1) {
-        return (
-            <Star width={12} pos="right" />
-        )
-    }
-
-    if (star < 0.5 && star > 0) {
-        return (
-            <Star width={6} pos="left" />
-        )
-    }
-
-    if (star === 0.5) {
-        return <Star width={8} pos="left" />
-    }
-
-    return (
-        <Star />
-    )
-}
->>>>>>> d9e5e72 (switched the product carousel to embla carousel)

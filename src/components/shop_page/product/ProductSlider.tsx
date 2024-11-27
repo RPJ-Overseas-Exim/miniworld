@@ -94,7 +94,7 @@ function Slides({
     return (
         <>
             {
-                images && images.map((image, index) => {
+                images?.map((image, index) => {
 
                     if (!image.url) {
                         return

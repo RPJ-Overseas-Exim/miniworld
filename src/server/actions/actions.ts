@@ -1,7 +1,7 @@
 "use server"
 import {db} from "../db/index"
 import { user} from  "../db/schema"
-import { registerFormType } from "~/lib/types/User"
+import { type registerFormType } from "~/lib/types/User"
 
 
 export async function postUserData(User:registerFormType ) {

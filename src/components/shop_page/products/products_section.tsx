@@ -1,6 +1,6 @@
 import React from "react"
 import { ProductList } from "~/components/ProductList";
-import { productType } from "~/lib/types/Product";
+import {type productType } from "~/lib/types/Product";
 
 export default async function ProductSection({
     products

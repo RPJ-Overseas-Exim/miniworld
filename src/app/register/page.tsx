@@ -3,10 +3,10 @@ import Link from "next/link";
 import { poppinsBold } from "public/fonts/fonts";
 import React, { useActionState } from "react"
 import { SliderButton } from "~/components/ui/Button";
-import { z } from "zod"
+import { type z } from "zod"
 import { registerFormSchema } from "~/lib/types/User";
 import { postUserData } from "~/server/actions/actions";
-import { CustomLabel } from "./CustomLabel"
+import CustomLabel from "~/components/login/customLabel"
 
 
 export default function Register() {
@@ -25,7 +25,7 @@ export default function Register() {
         const results = registerFormSchema.safeParse(user)
 
         if (results.error) {
-            for (const [name, _] of Object.entries(results.error.formErrors.fieldErrors)) {
+            for (const [name] of Object.entries(results.error.formErrors.fieldErrors)) {
                 switch (name) {
                     case "username":
                         return { success: false, message: "please enter a valid username" }

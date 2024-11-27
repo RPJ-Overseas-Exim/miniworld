@@ -1,5 +1,5 @@
 import { db } from "~/server/db";
-import {productType} from "../types/Product";
+import {type productType} from "../types/Product";
 import { product, productCategory, productsToCategories, productImage } from "~/server/db/schema";
 import { asc, desc, eq, like } from "drizzle-orm";
 
