@@ -1,7 +1,14 @@
 import React from "react"
 import { SlidersHorizontal } from "lucide-react"
 
-export default function Filters(){
+export interface FiltersProps{
+    totalResultCount: number;
+    resultCount: number;
+    page: number;
+    limit: number;
+}
+
+export default function Filters({totalResultCount, resultCount, page, limit}:FiltersProps){
     return (
         <div className="flex items-center gap-x-4">
             <button type="button">
@@ -12,7 +19,9 @@ export default function Filters(){
                 Filter
             </h2>
 
-            <span className="hidden md:block text-sm border-l-2 border-black pl-4 whitespace-nowrap">Showing 1-16 of 32 results</span>
+            <span className="hidden md:block text-sm border-l-2 border-black pl-4 whitespace-nowrap">
+                Showing {(page-1)*limit + 1}-{(page-1)*limit + resultCount} of {totalResultCount} results
+            </span>
         </div>
     )
 }

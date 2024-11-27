@@ -15,6 +15,7 @@ export default {
                     blue: "var(--blue)",
                 },
                 foreground: {
+                    DEFAULT: "var(--foreground)",
                     pink: "var(--foreground-pink)",
                     purple: "var(--foreground-purple)",
                     blue: "var(--foreground-blue)",

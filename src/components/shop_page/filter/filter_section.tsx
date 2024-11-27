@@ -5,13 +5,27 @@ import Categories from "./Categories"
 import Filters from "./Filters"
 import { useRouter, useSearchParams } from "next/navigation"
 
-export default function FilterSection(){
+export interface FilterSectionProps{
+    totalResultCount: number;
+    resultCount: number;
+    limit: number;
+    page: number;
+}
+
+export default function FilterSection({
+    totalResultCount, resultCount, limit, page
+}:FilterSectionProps){
     return (
         <div className="bg-[#F9F1E7] px-6 py-4">
             <div className={`flex text-black justify-between ${poppinsRegular.className} text-sm`}>
 
                 {/* filter button */}
-                <Filters />
+                <Filters
+                    totalResultCount={totalResultCount}
+                    resultCount={resultCount}
+                    limit={limit}
+                    page={page}
+                />
 
                 {/* category buttons */}
                 <Categories />
