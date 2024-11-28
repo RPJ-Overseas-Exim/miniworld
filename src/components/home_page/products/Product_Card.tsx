@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { poppinsRegular } from "public/fonts/fonts";
+import { useRouter } from "next/navigation";
 gsap.registerPlugin(ScrollTrigger)
 
 export interface ProductCardProps {
@@ -15,13 +16,15 @@ export interface ProductCardProps {
     alt: string;
     width?: number;
     height?: number;
+    id?: string;
     title: string;
     description: string;
     price: string;
 }
 
-export function ProductCard({ src, alt, title, description, price}: ProductCardProps) {
+export function ProductCard({ src, alt, title, description, price, id=""}: ProductCardProps) {
     const [showInfo, setShowInfo] = React.useState<boolean>(false)
+    const router = useRouter()
 
     {/* hovering effect handler functions */ }
     const handleMouseOver = () => {
@@ -51,16 +54,23 @@ export function ProductCard({ src, alt, title, description, price}: ProductCardP
 
 
     {/* actions handler functions */ }
-    const handleAddToCart = () => {
+    const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.stopPropagation()
         console.log("Add to cart clicked")
     }
 
-    const handleProductShare = () => {
+    const handleProductShare = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.stopPropagation()
         console.log("Product share clicked")
     }
 
-    const handleProductLike = () => {
+    const handleProductLike = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.stopPropagation()
         console.log("Product Like clicked")
+    }
+
+    const handleNavigate = () => {
+        router.push(`/shop/${id}`)
     }
 
 
@@ -69,14 +79,15 @@ export function ProductCard({ src, alt, title, description, price}: ProductCardP
             ref={productCardRef}
             onMouseLeave={handleMouseLeave}
             onMouseOver={handleMouseOver}
-            className="relative overflow-hidden bg-white"
+            className="relative overflow-hidden bg-white cursor-pointer"
+            onClick={handleNavigate}
         >
             {/* section on hover */}
             <div className={`${showInfo ? "absolute" : "hidden"} bg-[#00000076] w-full h-full flex items-center justify-center z-[2]`}>
                 <div className="space-y-2 flex flex-col justify-center">
                     <button
                         type="button"
-                        onClick={handleAddToCart}
+                        onClick={(e)=>handleAddToCart(e)}
                         className="text-white"
                     >
                         <CardButton>
@@ -90,7 +101,7 @@ export function ProductCard({ src, alt, title, description, price}: ProductCardP
                             <button
                                 type="button"
                                 className="text-white md:text-lg flex items-center gap-x-2 w-[max-content]"
-                                onClick={handleProductShare}
+                                onClick={(e)=>handleProductShare(e)}
                             >
                                 <Share2 width={16} height={16} />
                                 <span className="text-white">Share</span>
@@ -99,11 +110,12 @@ export function ProductCard({ src, alt, title, description, price}: ProductCardP
                             <button
                                 type="button"
                                 className="text-white md:text-lg flex items-center gap-x-2 w-[max-content]"
-                                onClick={handleProductLike}
+                                onClick={(e)=>handleProductLike(e)}
                             >
                                 <Heart width={16} height={16} />
                                 <span className="text-white">Like</span>
                             </button>
+
                         </div>
                     </div>
                 </div>

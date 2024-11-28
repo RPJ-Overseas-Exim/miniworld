@@ -37,7 +37,6 @@
     "postgres": "^3.4.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "swiper": "^11.1.14",
     "tailwind-merge": "^2.5.4",
     "zod": "^3.23.3"
   },

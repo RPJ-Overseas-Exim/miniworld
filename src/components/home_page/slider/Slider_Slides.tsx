@@ -1,13 +1,9 @@
 "use client"
 import React from "react";
-import Image from "next/image";
-import { ArrowRightIcon } from "lucide-react";
 
-import { Pagination, Autoplay } from "swiper/modules"
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import 'swiper/css/pagination';
 import { poppinsBold, poppinsRegular } from "public/fonts/fonts";
+import EmblaCarousel from "./EmblaCarousel";
+import "./embla.css"
 
 export default function SwiperSlides(){
     const slideImages = [
@@ -19,64 +15,10 @@ export default function SwiperSlides(){
     ]
 
     return (
-        <Swiper 
-           modules = {[Pagination, Autoplay]} 
-           loop={true}
-           grabCursor={true}
-           draggable={true}
-           breakpoints={{
-               640: {
-                   slidesPerView: 2,
-                   centeredSlides: false,
-               },
-               1280: {
-                   slidesPerView: 3,
-                   centeredSlides: false,
-               }
-           }}
-           centeredSlides={true}
-           pagination={{clickable: true}}
-           autoplay={{
-               delay: 5000,
-           }}
-        >
-            {slideImages.map((value, index)=>(
-                <SwiperSlide key={index} >
-                    <Slide value={value} />
-                </SwiperSlide>
-            ))}
-        </Swiper>
-     )
-}
-
-interface SlideProps{
-    value: string;
-}
-
-export function Slide({value}:SlideProps){
-
-    return (
-        <div className="w-full h-full">
-            <div className="relative">
-                <div className="card-info absolute w-full h-full items-end p-4">
-                    <SlideDetails />
-
-                    <div className="w-10 h-10 bg-background-pink p-2 cursor-pointer">
-                        <ArrowRightIcon className="w-full h-full" />
-                    </div>
-                </div>
-            
-                {/* background Image */}
-                <Image 
-                    src={value}
-                    alt={"Image"}
-                    width={100}
-                    height={100}
-                    className="w-full h-full object-center object-cover"
-                />
-            </div>
+        <div className="w-full h-full px-2">
+            <EmblaCarousel slides={slideImages} options={{loop: true, align: "start" }} />
         </div>
-    )
+     )
 }
 
 export function SlideDetails(){
