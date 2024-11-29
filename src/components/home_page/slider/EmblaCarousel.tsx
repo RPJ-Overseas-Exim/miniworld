@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from "next/image"
 import { EmblaOptionsType } from 'embla-carousel'
+//import AutoPlay from 'embla-carousel-autoplay'
 import { DotButton, useDotButton } from './EmblaCarouselDotButton'
 import {
     PrevButton,

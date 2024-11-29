@@ -1,5 +1,7 @@
+"use client"
 import React from "react"
 import { SlidersHorizontal } from "lucide-react"
+import { useRouter, useSearchParams } from "next/navigation";
 
 export interface FiltersProps{
     totalResultCount: number;
@@ -9,9 +11,19 @@ export interface FiltersProps{
 }
 
 export default function Filters({totalResultCount, resultCount, page, limit}:FiltersProps){
+    const router = useRouter()
+    const searchParams = useSearchParams()
+
+    const  handleFilterBox = ()=>{
+        const newSearchParams = new URLSearchParams(searchParams) 
+        const filterValue = searchParams.get("filter") ?? ""
+        newSearchParams.set("filter", filterValue == "true" ? "false" : "true")
+        router.push("/shop?"+newSearchParams.toString())
+    }
+
     return (
         <div className="flex items-center gap-x-4">
-            <button type="button">
+            <button type="button" onClick={handleFilterBox}>
                 <SlidersHorizontal className="text-black" />
             </button>
 
@@ -26,9 +38,3 @@ export default function Filters({totalResultCount, resultCount, page, limit}:Fil
     )
 }
 
-export function FilterBox(){
-    return (
-        <div className="absolute top-0 left-0 bg-background-blue w-[400px] h-full">
-        </div>
-    )
-}
