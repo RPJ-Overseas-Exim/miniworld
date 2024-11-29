@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from "next/image"
-import { EmblaOptionsType } from 'embla-carousel'
-//import AutoPlay from 'embla-carousel-autoplay'
+import { type EmblaOptionsType } from 'embla-carousel'
 import { DotButton, useDotButton } from './EmblaCarouselDotButton'
 import {
     PrevButton,
@@ -9,6 +8,7 @@ import {
     usePrevNextButtons
 } from './EmblaCarouselArrowButtons'
 import useEmblaCarousel from 'embla-carousel-react'
+import SlideDetails from './Slider_details'
 
 type PropType = {
     slides: string[];
@@ -35,7 +35,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 <div className="embla__container">
                     {slides.map((link, index) => (
                         <div className="embla__slide" key={index}>
-                            <div className="embla__slide__container">
+                            <div className={selectedIndex === index ? "embla__slide__container__active" : "embla__slide__container"}>
                                 <Image
                                     src={link}
                                     alt=""
@@ -43,6 +43,15 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                                     height={100}
                                     className="w-full h-full object-center object-cover"
                                 />
+
+                                <div className={selectedIndex === index
+                                    ? "absolute top-0 left-0 w-full h-full"
+                                    : "hidden"
+                                }>
+                                    <div className="w-full h-full flex flex-col items-center justify-end py-10">
+                                        <SlideDetails />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     ))}

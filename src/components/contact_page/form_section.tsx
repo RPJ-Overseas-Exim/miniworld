@@ -4,13 +4,42 @@ import { Phone, MapPin, Clock4 } from "lucide-react"
 import { poppinsRegular } from "public/fonts/fonts"
 import { SliderButton } from "../ui/Button"
 
+interface formDetailsType{
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+}
+
 export default function ContactFormSection(){
+    const [formDetails, setFormDetails] = React.useState<formDetailsType>({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+    })
+
+    const handleFormDetail = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>)=>{
+        setFormDetails({
+            ...formDetails,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
+        e.preventDefault()
+        console.log(formDetails)
+    }
+
     return (
         <section className={`flex justify-center text-black py-6 ${poppinsRegular.className}`}>
             <div className="w-[90%] max-w-[900px] flex flex-col md:flex-row gap-y-8 md:gap-y-0">
                 <ContactDetailsSection />
                 
-                <form className="flex flex-col gap-y-4 md:w-1/2">
+                <form
+                    className="flex flex-col gap-y-4 md:w-1/2"
+                    onSubmit={(e)=>handleSubmit(e)}
+                >
 
                     <div className="text-black flex flex-col gap-2">
                         <label htmlFor="name"
@@ -24,6 +53,7 @@ export default function ContactFormSection(){
                             id="name"
                             className="p-2 rounded-lg border border-border-muted"
                             placeholder="Enter your name"
+                            onChange={(e)=>handleFormDetail(e)}
                         />
                     </div>
 
@@ -39,6 +69,7 @@ export default function ContactFormSection(){
                             id="email"
                             className="p-2 rounded-lg border border-border-muted"
                             placeholder="Enter your email address"
+                            onChange={(e)=>handleFormDetail(e)}
                         />
                     </div>
 
@@ -54,6 +85,7 @@ export default function ContactFormSection(){
                             id="subject"
                             className="p-2 rounded-lg border border-border-muted"
                             placeholder="Enter your subject"
+                            onChange={(e)=>handleFormDetail(e)}
                         />
                     </div>
 
@@ -68,6 +100,7 @@ export default function ContactFormSection(){
                             id="message"
                             className="p-2 rounded-lg border border-border-muted"
                             placeholder="Enter your message"
+                            onChange={(e)=>handleFormDetail(e)}
                         />
                     </div>
 

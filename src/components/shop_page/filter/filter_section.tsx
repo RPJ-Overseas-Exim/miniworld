@@ -60,6 +60,7 @@ export function SortBy(){
                     <select
                     onChange={(e)=>handleOnChange(e)}
                     className="p-1 sm:p-2 rounded-lg" name="sortBy">
+                        <option value="name">Name</option>
                         <option value="price">Price</option>
                         <option value="likes">like</option>
                     </select>

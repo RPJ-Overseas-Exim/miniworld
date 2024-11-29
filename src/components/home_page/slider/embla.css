@@ -1,7 +1,8 @@
 .embla {
   max-width: 70rem;
   margin: auto;
-  --slide-height: 24rem;
+  --slide-height: 20rem;
+  --slide-height-active: 28rem;
   --slide-spacing: 1rem;
   --slide-size: 100%;
   --slide-spacing-sm: 1.2rem;
@@ -19,6 +20,7 @@
     display: flex;
     touch-action: pan-y pinch-zoom;
     margin-left: calc(var(--slide-spacing) * -1);
+    height: var(--slide-height-active);
 }
 
 @media (min-width: 750px) {
@@ -60,6 +62,20 @@
     justify-content: center;
     height: var(--slide-height);
     user-select: none;
+    transition: all 0.3s ease;
+}
+
+.embla__slide__container__active {
+    box-shadow: inset 0 0 0 0.2rem black;
+    font-size: 4rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--slide-height-active);
+    user-select: none;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .embla__buttons {

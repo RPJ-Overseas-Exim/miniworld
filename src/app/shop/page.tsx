@@ -12,7 +12,7 @@ export default async function Shop({
     searchParams: Promise<Record<string, string | string[] | undefined>>;
 }){
 
-    const {category, sortBy, ascending, page, filter} = await searchParams
+    const {category, sortBy, ascending, page} = await searchParams
 
     const {products, totalResult, returnResult} = await getProductDetails({
         limit: 25,
@@ -27,7 +27,6 @@ export default async function Shop({
             <FilterSection limit={25} page={page ? Number(page) : 1} totalResultCount={totalResult} resultCount={returnResult} />
             <ProductSection
                 products={products}
-                filterValue={filter as string}
             />
             <PaginationSection
                 page={page ? Number(page) : 1}
