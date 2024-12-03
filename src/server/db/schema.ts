@@ -11,7 +11,8 @@ import {
     uniqueIndex,
     varchar,
     boolean,
-    bigint
+    bigint,
+    real
 } from "drizzle-orm/pg-core";
 import { nanoid } from "nanoid";
 
@@ -103,6 +104,7 @@ export const product = pgTable("product", {
     description: text("description"),
     price: integer("price"),
     likes: integer("likes").default(0),
+    rating: real("rating").default(0)
 })
 
 export const productRelations = relations(product, ({ many }) => ({

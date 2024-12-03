@@ -9,7 +9,6 @@ import { cn } from "~/lib/utils";
 import { db } from "~/server/db";
 import { product, productImage, productsToCategories } from "~/server/db/schema";
 
-const rating = 4.25
 export default async function ProductPage({
     params
 }: {
@@ -20,7 +19,8 @@ export default async function ProductPage({
         name:null,
         description:null,
         price:null,
-        likes:null
+        likes:null,
+        rating:null
     };
     const id = (await params).id
 
@@ -37,9 +37,9 @@ export default async function ProductPage({
                 productsToCategories.productId
             )
         if(queryResult[0]?.product){
-            const { id, name, description, price, likes } = queryResult[0]?.product
-            ProductResult = {id, name, description, price, likes} 
-            ProductResult.productImageRelation = [{url: queryResult[0]?.product_image?.url ?? "/image/wip.png", productId: id}]
+            const { id, name, description, price, likes, rating } = queryResult[0]?.product
+            ProductResult = {id, name, description, price, likes, rating} 
+            ProductResult.productImageRelation = [{url: queryResult[0]?.product_image?.url ?? "/images/wip.png", productId: id}]
 
             queryResult.forEach(result=>{
                 if(ProductResult.productImageRelation){
@@ -75,16 +75,16 @@ export default async function ProductPage({
                     </h2>
                     <span className="text-foreground-muted">₹{ProductResult.price}</span>
                     <div className="flex gap-1 items-center">
-                        <p className="text-xs">{rating}</p>
+                        <p className="text-xs">{ProductResult.rating}</p>
                         <div className="flex gap-2 my-4">
                             {
-                                [...[1, 2, 3, 4]].map((_, index) => {
+                                [...Array(4)].map((_, index) => {
                                     return (
-                                        <ReviewStar star={1} key={index} />
+                                        <ReviewStar star={Math.floor((ProductResult.rating ?? 0)/(index + 1))} key={index} />
                                     )
                                 })
                             }
-                            <ReviewStar star={rating - Math.floor(rating)} />
+                            <ReviewStar star={(ProductResult.rating ?? 0) - Math.floor(ProductResult.rating ?? 0)} />
                         </div>
                     </div>
                     <p>
