@@ -16,7 +16,7 @@ export default function SloganDiv(){
                     Unleash Your Creativity, One Miniature at a Time!
                 </h3>
 
-                <Link href="/products" className="w-[max-content] bg-background-pink">
+                <Link href="/shop" className="w-[max-content] bg-background-pink">
                     <ArrowButton>
                         <div className={`text-white ${poppinsRegular.className} font-semibold`}>Explore More</div>
                     </ArrowButton>

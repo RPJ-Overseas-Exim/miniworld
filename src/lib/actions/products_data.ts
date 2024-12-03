@@ -1,15 +1,15 @@
 import { db } from "~/server/db";
 import {type productType} from "../types/Product";
 import { product, productCategory, productsToCategories, productImage } from "~/server/db/schema";
-import { asc, desc, eq, like } from "drizzle-orm";
+import { and, asc, desc, eq, gte, like, lte } from "drizzle-orm";
 
 interface ProductDataProps{
     limit?: number;
     category?: string;
-    withImages?: boolean;
-    withCategories?: boolean;
     orderBy?: string;
     ascending?: boolean;
+    maxPrice?: number;
+    minPrice?: number;
 }
 
 export async function getProductDetails({
@@ -17,6 +17,8 @@ export async function getProductDetails({
     category = "",
     orderBy = "name",
     ascending = true,
+    minPrice = 0,
+    maxPrice = 10000,
 }:ProductDataProps){
 
         const result: productType[] = []
@@ -30,7 +32,13 @@ export async function getProductDetails({
                 .innerJoin(productsToCategories, eq(productsToCategories.productId, product.id))
                 .innerJoin(productCategory, eq(productCategory.id, productsToCategories.productCategoryId))
                 .leftJoin(productImage, eq(productImage.productId, product.id))
-                .where(like(productCategory.name, `%${category}%`))
+                .where(
+                    and(
+                        like(productCategory.name, `%${category}%`),
+                        gte(product.price, minPrice),
+                        lte(product.price, maxPrice),
+                    )
+                )
                 .orderBy(getOrderBy(orderBy, ascending))
 
             // reduce the data 
