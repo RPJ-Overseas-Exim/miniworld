@@ -1,19 +1,18 @@
 "use client"
 import Link from "next/link";
 import { poppinsBold } from "public/fonts/fonts";
-import React, { useActionState } from "react"
+import React, { startTransition, useActionState } from "react"
 import { SliderButton } from "~/components/ui/Button";
 import { type z } from "zod"
 import { registerFormSchema } from "~/lib/types/User";
 import { postUserData } from "~/server/actions/actions";
 import CustomLabel from "~/components/login/customLabel"
-
+import { useRouter } from "next/navigation";
 
 export default function Register() {
 
     {/* functionality of register page */ }
-
-
+    const router = useRouter()
     const handleSubmit = async (_: { success: boolean, message: string }, formData: FormData) => {
 
         const user: z.infer<typeof registerFormSchema> = {
@@ -38,10 +37,10 @@ export default function Register() {
         }
 
         const postUser = await postUserData(user)
-        if(postUser){
-            return {success:true, message: "Registration successful"}
+        if (postUser.success) {
+            router.push("/verify/" + postUser.userId)
         }
-        return {success:false, message:"Registration failed"}
+        return { success: postUser.success, message: postUser.message }
     }
 
     const [data, formAction, isPending] = useActionState(handleSubmit, { success: false, message: "" })
@@ -55,7 +54,9 @@ export default function Register() {
                         e.preventDefault()
                         const form: HTMLFormElement | null = document.querySelector("#register-form")
                         if (form) {
-                            formAction(new FormData(form))
+                            startTransition(() => {
+                                formAction(new FormData(form))
+                            })
                         }
                     }}
                     className="flex flex-col gap-y-6 sm:p-4 items-center"

@@ -47,6 +47,7 @@ export const authConfig = {
                 emailOrMobile: { label: "Email or Mobile number", type: "text" },
                 otp: { label: "OTP", type: "text" }
             },
+
             async authorize(credentials, _) {
                 const emailOrNum = credentials.emailOrMobile as string
                 const User = (await db.select().from(user)
