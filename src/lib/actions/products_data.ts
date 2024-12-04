@@ -1,9 +1,10 @@
 import { db } from "~/server/db";
 import {type productType} from "../types/Product";
 import { product, productCategory, productsToCategories, productImage } from "~/server/db/schema";
-import { and, asc, desc, eq, gte, like, lte } from "drizzle-orm";
+import { and, asc, desc, eq, gte, ilike, like, lte } from "drizzle-orm";
 
 interface ProductDataProps{
+    name?: string;
     limit?: number;
     category?: string;
     orderBy?: string;
@@ -19,6 +20,7 @@ export async function getProductDetails({
     ascending = true,
     minPrice = 0,
     maxPrice = 10000,
+    name = "",
 }:ProductDataProps){
 
         const result: productType[] = []
@@ -37,6 +39,7 @@ export async function getProductDetails({
                         like(productCategory.name, `%${category}%`),
                         gte(product.price, minPrice),
                         lte(product.price, maxPrice),
+                        ilike(product.name, `%${name}%`),
                     )
                 )
                 .orderBy(getOrderBy(orderBy, ascending))
@@ -58,6 +61,7 @@ export async function getProductDetails({
                             price: product.price,
                             productImageRelation: [],
                             productCategoryRelation: [],
+                            rating: product.rating,
                         }
 
                         acc[product.id] = productDetail
@@ -97,4 +101,21 @@ function getOrderBy(value: string, ascending: boolean){
   }else{
     return ascending ? asc(product.name) : desc(product.name)
   }
+}
+
+export async function searchProduct(name: string){
+    let result: productType[] = [];
+
+    try{
+        result = await db.select().from(product)
+            .where(like(product.name, name))
+            .orderBy(desc(product.price))
+            .limit(5);
+
+        return result
+    }catch(err){
+        console.log(err)
+    }
+
+    return result
 }

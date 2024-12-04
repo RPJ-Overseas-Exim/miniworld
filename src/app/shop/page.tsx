@@ -12,7 +12,7 @@ export default async function Shop({
     searchParams: Promise<Record<string, string | string[] | undefined>>;
 }){
 
-    const {category, sortBy, ascending, page, maxPrice, minPrice} = await searchParams
+    const {category, sortBy, ascending, page, maxPrice, minPrice, name} = await searchParams
 
     const {products, totalResult, returnResult} = await getProductDetails({
         limit: 25,
@@ -21,6 +21,7 @@ export default async function Shop({
         ascending: ascending === "false" ? false : true,
         maxPrice: maxPrice ? parseInt(maxPrice as string) : 10000,
         minPrice: minPrice ? parseInt(minPrice as string) : 0,
+        name: name as string,
     })
 
     return (

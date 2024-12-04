@@ -1,9 +1,10 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ShoppingCart, Search } from "lucide-react"
+import { ShoppingCart } from "lucide-react"
 import MenuBox from "../ui/Menu_Box"
 import { montserratVariable } from "public/fonts/fonts"
+import SearchBox from "./SearchBox"
 
 export default function Navbar() {
 
@@ -35,9 +36,8 @@ export default function Navbar() {
                 <div className="flex gap-x-4 items-center px-2">
                     {/* features icon section */}
                     <div className="hidden md:flex flex-row md:gap-x-6 lg:gap-x-8 text-foreground-purple items-center">
-                        <div className="md:w-6 md:h-6 lg:w-7 lg:h-7">
-                            <Search />
-                        </div>
+                        <SearchBox />
+
                         <div className="md:w-6 md:h-6 lg:w-7 lg:h-7">
                             <Link href="/cart">
                                 <ShoppingCart />
