@@ -30,3 +30,9 @@ export function sendEmail(to:string, subject:string, body:string){
         text:body
     })
 }
+
+export function sendVerificationEmail(to:string, otp:number | null){
+    const subject = "Verification OTP for your miniword account"
+    const body = "Here is a verification otp to verify your account: " + otp
+    return sendEmail(to, subject, body)
+}

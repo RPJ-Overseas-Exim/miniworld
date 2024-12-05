@@ -90,9 +90,11 @@ export default function Register() {
                         placeholder="Enter your number"
                     />
 
-                    <p>
-                        {data.success === false ? data.message : ""}
-                    </p>
+                    { data.success ===false && data.message!=="" &&(
+                        <p>
+                            {data.message}
+                        </p>
+                    )}
 
                     <button type="submit" className="w-full" disabled={isPending}>
                         <SliderButton>

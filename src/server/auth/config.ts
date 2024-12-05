@@ -49,12 +49,13 @@ export const authConfig = {
             },
 
             async authorize(credentials, _) {
-                const emailOrNum = credentials.emailOrMobile as string
+                const emailOrMobile = credentials.emailOrMobile as string
+
                 const User = (await db.select().from(user)
                     .where(
                         or(
-                            eq(user.email, emailOrNum),
-                            eq(user.number, BigInt(emailOrNum))
+                            eq(user.email, emailOrMobile),
+                            ...[isNaN(Number(emailOrMobile))?undefined: eq(user.number, BigInt(Number(emailOrMobile)))]
                         )
                     ))[0]
 

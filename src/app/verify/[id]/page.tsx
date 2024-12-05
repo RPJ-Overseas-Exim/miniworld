@@ -1,21 +1,27 @@
 "use client"
-import { useParams} from "next/navigation"
+import { useParams } from "next/navigation"
 import { poppinsBold } from "public/fonts/fonts"
-import React, {  useActionState } from "react"
+import React, { useActionState } from "react"
 import { CustomLabel } from "~/app/register/CustomLabel"
 import { SliderButton } from "~/components/ui/Button"
 import { verifyOTP } from "~/server/actions/actions"
+import { signIn } from "next-auth/react"
 
 
-export default function page (){
+export default function page() {
     const path = useParams()
 
-    async function handleSubmit(_:{success:boolean, message:string}, formData:FormData){
+    async function handleSubmit(_: { success: boolean, message: string }, formData: FormData) {
         const otp = formData.get("otp")
-        if(otp){
-            return await verifyOTP(path["id"] as string ?? "", Number(otp))
+
+        if (otp) {
+            const verification = await verifyOTP(path["id"] as string ?? "", Number(otp))
+            if (verification.success && verification?.email) {
+                await signIn("credentials", { emailOrMobile: verification.email, otp: otp })
+                return { success: verification.success, message: verification.message }
+            }
         }
-        return {success:false, message:"OTP could not be verified"}
+        return { success: false, message: "OTP could not be verified" }
     }
 
     const [data, formAction, isPending] = useActionState(handleSubmit, { success: false, message: "" })
@@ -25,7 +31,7 @@ export default function page (){
             <div className="border border-border-muted py-6 px-4 rounded-lg drop-shadow-lg bg-white">
                 <form
                     id="verification-form"
-                    action= {formAction}
+                    action={formAction}
                     className="flex flex-col gap-y-6 sm:p-4 items-center"
                 >
                     <h2 className={`${poppinsBold.className} text-3xl text-foreground-pink w-full`}>Verify</h2>
@@ -39,9 +45,17 @@ export default function page (){
                         placeholder="Enter OTP sent to your email"
                     />
 
-                    <p>
-                        {data.success === false ? data.message : ""}
-                    </p>
+                    {data.success == false && data.message!=="" &&
+                        <p>
+                            {data.message}
+                        </p>
+                    }
+
+                    {data.success === true && data.message !="" &&
+                        <p className="text-green-400">
+                            {data.message}
+                        </p>
+                    }
 
                     <button type="submit" className="w-full" disabled={isPending}>
                         <SliderButton>
