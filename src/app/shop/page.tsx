@@ -22,6 +22,7 @@ export default async function Shop({
         maxPrice: maxPrice ? parseInt(maxPrice as string) : 10000,
         minPrice: minPrice ? parseInt(minPrice as string) : 0,
         name: name as string,
+        page: page ? parseInt(page as string) : 1,
     })
 
     return (

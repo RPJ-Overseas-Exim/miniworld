@@ -32,7 +32,7 @@ export default function Filters({totalResultCount, resultCount, page, limit}:Fil
             </h2>
 
             <span className="hidden md:block text-sm border-l-2 border-black pl-4 whitespace-nowrap">
-                Showing {(page-1)*limit + 1}-{(page-1)*limit + resultCount} of {totalResultCount} results
+                Showing {(page-1)*limit + 1}-{Math.min((page-1)*limit + resultCount, totalResultCount)} of {totalResultCount} results
             </span>
         </div>
     )

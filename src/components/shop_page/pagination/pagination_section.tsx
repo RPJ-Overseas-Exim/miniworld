@@ -21,13 +21,13 @@ export default function PaginationSection({
                     prevPage={(page - 1)}
                 />
                     
-                <PageButton page={page - 1} totalPages={totalResult / limit} />
-                <PageButton page={page} totalPages={totalResult / limit} />
-                <PageButton page={page + 1} totalPages={totalResult / limit} />
+                <PageButton page={page - 1} totalPages={totalResult % limit === 0 ? totalResult / limit : totalResult / limit + 1} />
+                <PageButton page={page} totalPages={totalResult % limit === 0 ? totalResult / limit : totalResult / limit + 1} />
+                <PageButton page={page + 1} totalPages={totalResult % limit === 0 ? totalResult / limit : totalResult / limit + 1} />
 
                 <NextButton
                     nextPage={(page + 1)}
-                    totalPages = {totalResult / limit}
+                    totalPages = {totalResult % limit === 0 ? totalResult / limit : totalResult / limit + 1}
                 />
             </div>
         </div>

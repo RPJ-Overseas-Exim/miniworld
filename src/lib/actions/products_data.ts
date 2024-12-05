@@ -11,9 +11,11 @@ interface ProductDataProps{
     ascending?: boolean;
     maxPrice?: number;
     minPrice?: number;
+    page?: number;
 }
 
 export async function getProductDetails({
+    page = 0,
     limit = 100,
     category = "",
     orderBy = "name",
@@ -23,9 +25,8 @@ export async function getProductDetails({
     name = "",
 }:ProductDataProps){
 
-        const result: productType[] = []
+        let result: productType[] = []
         let totalResult = 0
-        let returnResult = 0
 
         try{
 
@@ -67,10 +68,7 @@ export async function getProductDetails({
                         acc[product.id] = productDetail
                         totalResult += 1
 
-                        if(returnResult < limit){
-                            returnResult += 1
-                            result.push(productDetail)
-                        }
+                        result.push(productDetail)
                     }
 
                     // add image to the existing row in data
@@ -90,7 +88,8 @@ export async function getProductDetails({
             console.log(err)
         }
 
-        return { products: result, totalResult, returnResult }
+        result = result.slice((page-1)*limit, (page-1)*limit + limit)
+        return { products: result, totalResult, returnResult: result.length }
     }
 
 function getOrderBy(value: string, ascending: boolean){

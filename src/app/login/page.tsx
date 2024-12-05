@@ -36,6 +36,7 @@ export default function Login(){
 
     return (
         <section className="min-h-[80vh] flex items-center justify-center py-4 gradient-background">
+
             <div className="border border-border-muted py-6 px-4 rounded-lg drop-shadow-lg bg-white">
                 <form
                     id="login-form"
